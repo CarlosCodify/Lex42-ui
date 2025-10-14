@@ -1,0 +1,89 @@
+<section id="inicio" class="hero-section">
+  <!-- Elementos decorativos geométricos -->
+  <div class="geometric-shapes">
+    <div class="triangle triangle-blue triangle-1"></div>
+    <div class="triangle triangle-orange triangle-2"></div>
+    <div class="triangle triangle-blue-small triangle-3"></div>
+    <div class="triangle triangle-orange-small triangle-4"></div>
+    <div class="triangle triangle-blue-small triangle-5"></div>
+    <div class="triangle triangle-orange triangle-6"></div>
+  </div>
+
+  <div class="container hero-container">
+    <!-- 1. SECCIÓN DE TÍTULOS -->
+    <div class="hero-titles-section">
+      <p class="hero-subtitle">Donde el derecho se alinea con tu ritmo de crecimiento</p>
+      
+      <h1 class="hero-title">
+        El <span class="text-blue">Derecho</span> a la velocidad del <span class="text-orange">negocio</span>
+      </h1>
+      
+      <p class="hero-description">Soluciones legales para decisiones estratégicas</p>
+    </div>
+
+    <!-- 2. SECCIÓN DE BOTÓN -->
+    <div class="hero-button-section">
+      <a href="#contacto" class="btn btn-primary btn-large">
+        Agenda una consulta
+      </a>
+    </div>
+
+    <!-- 3. SECCIÓN DE TESTIMONIOS -->
+    <div class="testimonials-section">
+      @for (testimonial of testimonials(); track testimonial.id) {
+        <div 
+          class="testimonial-card"
+          [class.testimonial-left]="testimonial.id === 2"
+          [class.testimonial-center]="testimonial.id === 1"
+          [class.testimonial-right]="testimonial.id === 3"
+        >
+          <div class="testimonial-avatar-wrapper">
+            <img 
+              [src]="testimonial.avatar" 
+              [alt]="testimonial.author"
+              class="testimonial-avatar"
+              onerror="this.src='/assets/images/testimonials/default-avatar.png'"
+            >
+          </div>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">"{{ testimonial.quote }}"</p>
+            <div class="testimonial-footer">
+              <div class="testimonial-author">
+                <svg class="icon-company" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M16 14v3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>{{ testimonial.author }}</span>
+              </div>
+              <div class="testimonial-rating">
+                @for (star of getStarArray(testimonial.rating); track $index) {
+                  <svg class="star" width="14" height="14" viewBox="0 0 24 24" fill="#FFD700">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- 4. SECCIÓN DE LOGOS DE CLIENTES -->
+  <div class="clients-section">
+    <div class="container">
+      <div class="clients-grid">
+        @for (client of clientLogos(); track client.name) {
+          <div class="client-logo-wrapper">
+            <img 
+              [src]="client.src" 
+              [alt]="client.name"
+              class="client-logo"
+              onerror="this.style.display='none'"
+            >
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+

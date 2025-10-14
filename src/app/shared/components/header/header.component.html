@@ -1,0 +1,75 @@
+<header class="header">
+  <div class="container">
+    <nav class="navbar">
+      <!-- Logo -->
+      <a href="#inicio" class="logo" (click)="scrollToSection($event, '#inicio')">
+        <img src="/assets/images/logo.png" alt="LEX 42" class="logo-img">
+      </a>
+
+      <!-- Menu desktop -->
+      <ul class="nav-menu">
+        @for (item of menuItems(); track item.link) {
+          <li class="nav-item">
+            <a 
+              [href]="item.link" 
+              class="nav-link"
+              (click)="scrollToSection($event, item.link)"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+        <li class="nav-item">
+          <a 
+            href="#contacto" 
+            class="btn btn-primary"
+            (click)="scrollToSection($event, '#contacto')"
+          >
+            Contacto
+          </a>
+        </li>
+      </ul>
+
+      <!-- Hamburger menu mobile -->
+      <button 
+        class="menu-toggle" 
+        (click)="toggleMenu()"
+        [class.active]="isMenuOpen()"
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    @if (isMenuOpen()) {
+      <div class="mobile-menu">
+        <ul class="mobile-nav-menu">
+          @for (item of menuItems(); track item.link) {
+            <li class="mobile-nav-item">
+              <a 
+                [href]="item.link" 
+                class="mobile-nav-link"
+                (click)="scrollToSection($event, item.link)"
+              >
+                {{ item.label }}
+              </a>
+            </li>
+          }
+          <li class="mobile-nav-item">
+            <a 
+              href="#contacto" 
+              class="btn btn-primary btn-block"
+              (click)="scrollToSection($event, '#contacto')"
+            >
+              Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
+    }
+  </div>
+</header>
+

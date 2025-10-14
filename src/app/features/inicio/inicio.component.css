@@ -1,0 +1,429 @@
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(46.74% 87.46% at 50% 85.07%, #0178DF 0%, #01274D 100%);
+  padding-top: 80px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Elementos decorativos geométricos */
+.geometric-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  opacity: 0.6;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+}
+
+/* CONFIGURACIÓN DE TRIÁNGULOS */
+/* Puedes modificar estos valores para ajustar tamaño y posición */
+
+/* NOTA: Los triángulos CSS con border no soportan gradientes directamente */
+/* Usa colores sólidos aproximados a los gradientes del Figma */
+
+.triangle-blue {
+  /* Tamaño: modifica los valores para hacerlo más grande/pequeño */
+  border-width: 0 100px 173px 100px; /* 0 [izquierda] [altura] [derecha] */
+  /* Color azul aproximado del gradiente #6AB9FF a #406F99 */
+  border-color: transparent transparent rgba(106, 185, 255, 0.5) transparent;
+}
+
+.triangle-orange {
+  border-width: 0 90px 156px 90px;
+  /* Color naranja aproximado del gradiente #AB6400 a #452800 */
+  border-color: transparent transparent rgba(171, 100, 0, 0.6) transparent;
+}
+
+.triangle-blue-small {
+  border-width: 0 40px 69px 40px;
+  border-color: transparent transparent rgba(106, 185, 255, 0.4) transparent;
+}
+
+.triangle-orange-small {
+  border-width: 0 35px 61px 35px;
+  border-color: transparent transparent rgba(171, 100, 0, 0.5) transparent;
+}
+
+/* POSICIONES DE TRIÁNGULOS */
+/* Modifica top/left/right para cambiar la posición */
+
+.triangle-1 {
+  top: 25%;    /* Distancia desde arriba (0-100%) */
+  left: 8%;    /* Distancia desde la izquierda (0-100%) */
+  animation-delay: 0s;
+}
+
+.triangle-2 {
+  top: 35%;
+  left: 18%;
+  animation-delay: 1s;
+}
+
+.triangle-3 {
+  top: 20%;
+  right: 25%;  /* Distancia desde la derecha */
+  animation-delay: 2s;
+}
+
+.triangle-4 {
+  top: 45%;
+  left: 25%;
+  animation-delay: 0.5s;
+}
+
+.triangle-5 {
+  top: 15%;
+  left: 35%;
+  animation-delay: 1.5s;
+}
+
+.triangle-6 {
+  top: 30%;
+  right: 15%;
+  animation-delay: 2.5s;
+}
+
+/* Contenedor principal del hero */
+.hero-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* 1. SECCIÓN DE TÍTULOS */
+.hero-titles-section {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+}
+
+.text-blue {
+  color: var(--color-accent-blue);
+}
+
+.text-orange {
+  color: var(--color-accent-orange);
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+/* 2. SECCIÓN DE BOTÓN */
+.hero-button-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn-large {
+  padding: 1rem 3rem;
+  font-size: 1.125rem;
+}
+
+/* 3. SECCIÓN DE TESTIMONIOS */
+.testimonials-section {
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  height: 250px;
+  padding: 0 1rem;
+}
+
+.testimonial-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  max-width: 450px;
+  width: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+/* Posiciones específicas de cada testimonio */
+.testimonial-left {
+  bottom: 10px;
+  left: -35%;
+}
+
+.testimonial-center {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.testimonial-right {
+  top: 35%;
+  right: -35%;
+}
+
+/* Avatar con fondo azul */
+.testimonial-avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-avatar-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #292F53;
+  border-radius: var(--radius-md);
+  z-index: -1;
+}
+
+.testimonial-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  display: block;
+}
+
+.testimonial-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.testimonial-quote {
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.icon-company {
+  width: 14px;
+  height: 14px;
+  color: #999;
+  flex-shrink: 0;
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  width: 14px;
+  height: 14px;
+}
+
+/* 4. SECCIÓN DE CLIENTES */
+.clients-section {
+  background-color: rgba(0, 15, 30, 0.4);
+  padding: 3rem 0;
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+}
+
+.clients-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.client-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  transition: transform var(--transition-normal);
+}
+
+.client-logo-wrapper:hover {
+  transform: scale(1.1);
+}
+
+.client-logo {
+  max-width: 140px;
+  max-height: 60px;
+  width: auto;
+  height: auto;
+  opacity: 0.8;
+  filter: brightness(0) invert(1);
+  transition: opacity var(--transition-fast);
+  object-fit: contain;
+}
+
+.client-logo:hover {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero-container {
+    gap: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-subtitle,
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .btn-large {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* Ajustar triángulos en mobile */
+  .triangle-blue {
+    border-width: 0 60px 104px 60px;
+  }
+
+  .triangle-orange {
+    border-width: 0 50px 87px 50px;
+  }
+
+  .triangle-blue-small {
+    border-width: 0 25px 43px 25px;
+  }
+
+  .triangle-orange-small {
+    border-width: 0 20px 35px 20px;
+  }
+
+  .testimonials-section {
+    position: static;
+    height: auto;
+    padding: 0;
+    margin-top: 2rem;
+  }
+
+  .testimonial-card {
+    position: static !important;
+    max-width: 100%;
+    transform: none !important;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-left,
+  .testimonial-center,
+  .testimonial-right {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+
+  .clients-grid {
+    gap: 1.5rem;
+  }
+
+  .client-logo-wrapper {
+    height: 60px;
+  }
+
+  .client-logo {
+    max-width: 100px;
+    max-height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+}
