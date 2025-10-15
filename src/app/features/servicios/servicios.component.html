@@ -1,6 +1,7 @@
 <section id="servicios" class="servicios-section">
   <div class="container">
-    <div class="servicios-layout">
+    <!-- Grid de servicios -->
+    <div class="servicios-grid">
       <!-- Título principal -->
       <div class="servicios-header">
         <h2 class="servicios-title">
@@ -8,53 +9,101 @@
         </h2>
       </div>
 
-      <!-- Grid de servicios -->
-      <div class="servicios-grid">
-        @for (servicio of servicios(); track servicio.id) {
-          <article 
-            class="servicio-card" 
-            [class.card-primary]="servicio.variant === 'primary'"
-            [class.card-dark]="servicio.variant === 'dark'"
-            [class.card-large]="servicio.size === 'large'"
+      <!-- Derecho Laboral -->
+      <article 
+        class="servicio-card card-laboral" 
+        [class.card-primary]="servicios()[0].variant === 'primary'"
+      >
+        <div class="card-image">
+          <img 
+            [src]="servicios()[0].image" 
+            [alt]="servicios()[0].title"
+            onerror="this.src='/assets/images/services/placeholder.jpg'"
           >
-            <div class="card-image">
-              <img 
-                [src]="servicio.image" 
-                [alt]="servicio.title"
-                onerror="this.src='/assets/images/services/placeholder.jpg'"
-              >
-              <!-- Badges si existen -->
-              @if (servicio.badges && servicio.badges.length > 0) {
-                <div class="card-badges">
-                  @for (badge of servicio.badges; track badge) {
-                    <span class="badge">
-                      <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                        <path d="M9 12l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      {{ badge }}
-                    </span>
-                  }
-                </div>
+          <!-- Badges -->
+          @if (servicios()[0].badges && servicios()[0].badges!.length > 0) {
+            <div class="card-badges">
+              @for (badge of servicios()[0].badges; track badge) {
+                <span class="badge">
+                  <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                    <path d="M9 12l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {{ badge }}
+                </span>
               }
             </div>
-            <div class="card-content">
-              <h3 class="card-title">{{ servicio.title }}</h3>
-              <p class="card-description">{{ servicio.description }}</p>
-            </div>
-          </article>
-        }
+          }
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">{{ servicios()[0].title }}</h3>
+          <p class="card-description">{{ servicios()[0].description }}</p>
+        </div>
+      </article>
 
-        <!-- Tarjeta Ver todos -->
-        <a href="#contacto" class="servicio-card card-view-all">
-          <div class="view-all-content">
-            <span class="view-all-text">Ver todos</span>
-            <svg class="view-all-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </a>
-      </div>
+      <!-- Derecho Comercial -->
+      <article 
+        class="servicio-card" 
+        [class.card-primary]="servicios()[1].variant === 'primary'"
+      >
+        <div class="card-image">
+          <img 
+            [src]="servicios()[1].image" 
+            [alt]="servicios()[1].title"
+            onerror="this.src='/assets/images/services/placeholder.jpg'"
+          >
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">{{ servicios()[1].title }}</h3>
+          <p class="card-description">{{ servicios()[1].description }}</p>
+        </div>
+      </article>
+
+      <!-- Gestión Predial -->
+      <article 
+        class="servicio-card" 
+        [class.card-dark]="servicios()[3].variant === 'dark'"
+      >
+        <div class="card-image">
+          <img 
+            [src]="servicios()[3].image" 
+            [alt]="servicios()[3].title"
+            onerror="this.src='/assets/images/services/placeholder.jpg'"
+          >
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">{{ servicios()[3].title }}</h3>
+          <p class="card-description">{{ servicios()[3].description }}</p>
+        </div>
+      </article>
+
+      <!-- Derecho Corporativo -->
+      <article 
+        class="servicio-card" 
+        [class.card-dark]="servicios()[2].variant === 'dark'"
+      >
+        <div class="card-image">
+          <img 
+            [src]="servicios()[2].image" 
+            [alt]="servicios()[2].title"
+            onerror="this.src='/assets/images/services/placeholder.jpg'"
+          >
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">{{ servicios()[2].title }}</h3>
+          <p class="card-description">{{ servicios()[2].description }}</p>
+        </div>
+      </article>
+
+      <!-- Ver todos -->
+      <a href="#contacto" class="servicio-card card-view-all">
+        <div class="view-all-content">
+          <span class="view-all-text">Ver todos</span>
+          <svg class="view-all-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
     </div>
   </div>
 </section>

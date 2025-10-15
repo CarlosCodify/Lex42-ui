@@ -49,7 +49,7 @@ export class ServiciosComponent {
       id: 4,
       title: 'Gestión Predial e Infraestructura',
       description: 'Asesoramos legalmente todas las etapas de proyectos que requieren adquisición de predios o servidumbres. Incluye revisión de títulos, negociación, representación y trámites ante autoridades.',
-      image: '/assets/images/services/gestion-predial.jpg',
+      image: '/assets/images/services/gestion-predial.png',
       variant: 'dark',
       size: 'normal'
     }
