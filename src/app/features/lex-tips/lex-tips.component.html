@@ -1,0 +1,46 @@
+<section class="lex-tips-section">
+  <div class="background-pattern"></div>
+  
+  <div class="lex-tips-container">
+    <div class="lex-tips-content">
+      <div class="lex-tips-header">
+        <h2 class="lex-tips-title">
+          <span class="title-highlight">Lex Tips</span> para empresarios como tú
+        </h2>
+        <p class="lex-tips-subtitle">
+          Consejos legales claros, breves y accionables para ayudarte a tomar decisiones estratégicas sin complicaciones jurídicas.
+        </p>
+        <button class="btn-explore">
+          Explorar más tips
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.16675 10H15.8334M15.8334 10L10.0001 4.16667M15.8334 10L10.0001 15.8333" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="faq-list">
+        @for (faq of faqs(); track $index) {
+          <div class="faq-item" [class.active]="faq.isOpen">
+            <button class="faq-question" (click)="toggleFaq($index)">
+              <span>{{ faq.question }}</span>
+              <svg class="faq-icon" [class.rotate]="faq.isOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            
+            <div class="faq-answer" [class.show]="faq.isOpen">
+              <div class="faq-answer-content">
+                <p>{{ faq.answer }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="lex-tips-illustration">
+      <img src="/assets/images/lex_tips/faq.svg" alt="Ilustración Lex Tips" class="illustration-img">
+    </div>
+  </div>
+</section>
+

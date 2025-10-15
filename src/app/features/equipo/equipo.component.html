@@ -1,0 +1,52 @@
+<section id="equipo" class="equipo-section">
+  <div class="container">
+    <!-- Header de la sección -->
+    <div class="equipo-header">
+      <h2 class="equipo-title">
+        Nuestros <span class="text-orange">abogados</span>
+      </h2>
+      <p class="equipo-description">
+        Nuestro equipo está enfocado en proteger tus intereses y ofrecer 
+        soluciones legales prácticas que impulsan tu crecimiento
+      </p>
+      <a href="#contacto" class="btn btn-outline-primary btn-ver-todos">
+        Ver todos
+        <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Grid de abogados -->
+    <div class="team-grid">
+      @for (member of teamMembers(); track member.id) {
+        <article class="team-card">
+          <!-- Foto circular -->
+          <div class="team-photo-wrapper" (click)="goToProfile(member)">
+            <img 
+              [src]="member.photo" 
+              [alt]="member.name"
+              class="team-photo"
+              onerror="this.src='/assets/images/teams/placeholder.jpg'"
+            >
+            
+            <!-- Overlay con información al hover -->
+            <div class="team-overlay">
+              <div class="overlay-content">
+                <h3 class="member-name">{{ member.name }}</h3>
+                <p class="member-position">{{ member.position }}</p>
+                <button 
+                  class="btn btn-primary btn-contact"
+                  (click)="openEmail(member.email); $event.stopPropagation()"
+                >
+                  Consultar
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+

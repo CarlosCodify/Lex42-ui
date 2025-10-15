@@ -1,0 +1,209 @@
+.section-separator {
+  position: relative;
+  min-height: 50vh;
+  background: radial-gradient(46.74% 87.46% at 50% 85.07%, #0178DF 0%, #01274D 100%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 4rem 0;
+}
+
+/* Líneas decorativas verticales */
+.decorative-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 2rem;
+}
+
+.lines-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Triángulos decorativos (todos a la derecha) */
+.geometric-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  opacity: 0.6;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+}
+
+/* Triángulos - Tamaños y colores */
+.triangle-blue {
+  border-width: 0 clamp(60px, 8vw, 100px) clamp(104px, 14vw, 173px) clamp(60px, 8vw, 100px);
+  border-color: transparent transparent rgba(106, 185, 255, 0.5) transparent;
+}
+
+.triangle-orange {
+  border-width: 0 clamp(50px, 7vw, 90px) clamp(87px, 12vw, 156px) clamp(50px, 7vw, 90px);
+  border-color: transparent transparent rgba(171, 100, 0, 0.6) transparent;
+}
+
+.triangle-blue-small {
+  border-width: 0 clamp(25px, 3.5vw, 40px) clamp(43px, 6vw, 69px) clamp(25px, 3.5vw, 40px);
+  border-color: transparent transparent rgba(106, 185, 255, 0.4) transparent;
+}
+
+.triangle-orange-small {
+  border-width: 0 clamp(20px, 3vw, 35px) clamp(35px, 5vw, 61px) clamp(20px, 3vw, 35px);
+  border-color: transparent transparent rgba(171, 100, 0, 0.5) transparent;
+}
+
+/* Posiciones de triángulos (todos de mitad hacia la derecha) */
+.triangle-1 {
+  /* Triángulo azul GRANDE que se sale del borde */
+  top: 20%;
+  right: -80px;
+  animation-delay: 0s;
+  border-width: 0 clamp(120px, 15vw, 180px) clamp(208px, 26vw, 312px) clamp(120px, 15vw, 180px);
+}
+
+.triangle-2 {
+  top: 60%;
+  right: 30%;
+  animation-delay: 1.5s;
+}
+
+.triangle-3 {
+  top: 10%;
+  right: 40%;
+  animation-delay: 2s;
+}
+
+.triangle-4 {
+  bottom: 15%;
+  right: 15%;
+  animation-delay: 0.8s;
+}
+
+/* Contenido */
+.separator-content {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  max-width: 1500px;
+  width: 100%;
+  padding: 0 clamp(2rem, 5vw, 6rem) 0 clamp(4rem, 8vw, 10rem);
+  margin-left: 0;
+}
+
+/* Badge con comillas */
+.separator-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #73BDFF;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.quote-icon {
+  width: clamp(28px, 3vw, 36px);
+  height: clamp(28px, 3vw, 36px);
+  display: block;
+}
+
+/* Título principal */
+.separator-title {
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title-line-1 {
+  color: var(--color-text-primary);
+}
+
+.title-line-2 {
+  color: #73BDFF;
+}
+
+/* Subtítulo */
+.separator-subtitle {
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-weight: 300;
+  max-width: 800px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .separator-content {
+    padding: 0 clamp(2rem, 4vw, 4rem) 0 clamp(3rem, 6vw, 6rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-separator {
+    min-height: 40vh;
+    padding: 3rem 0;
+    justify-content: center;
+  }
+
+  .separator-content {
+    padding: 0 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+
+  .decorative-lines {
+    padding: 1rem;
+  }
+
+  .separator-badge {
+    margin-bottom: 1rem;
+  }
+
+  .separator-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  .separator-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+  }
+}
+

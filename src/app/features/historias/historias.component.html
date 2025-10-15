@@ -1,0 +1,40 @@
+<section class="historias-section">
+  <div class="historias-container">
+    <div class="historias-header">
+      <h2 class="historias-title">
+        Historias reales, <span class="highlight">resultados</span> concretos
+      </h2>
+      <p class="historias-subtitle">
+        Empresas y emprendedores nos eligen por nuestra capacidad de anticiparnos, hablar claro y generar confianza con resultados visibles.
+      </p>
+    </div>
+
+    <div class="historias-grid">
+      @for (historia of historias(); track historia.author) {
+        <article class="historia-card">
+          <div class="quote-icon">
+            <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.5078 24.4598C15.5078 25.8953 15.0054 27.0976 14.0005 28.0666C12.9957 29.0355 11.7396 29.52 10.2323 29.52C8.79679 29.52 7.5766 28.9638 6.57174 27.8512C5.56688 26.7387 5.06445 25.3391 5.06445 23.6523C5.06445 22.4322 5.33361 21.0864 5.87193 19.615C6.44614 18.1436 7.18184 16.6542 8.07903 15.1469C9.01212 13.6396 10.0529 12.1503 11.2013 10.6789C12.3856 9.1716 13.5699 7.77197 14.7542 6.48001L16.2076 7.66431C14.5927 9.56637 13.2469 11.4864 12.1702 13.4243C11.0936 15.3623 10.4476 17.2643 10.2323 19.1305C11.6678 19.2381 12.9059 19.7765 13.9467 20.7454C14.9874 21.7144 15.5078 22.9525 15.5078 24.4598ZM30.9575 24.4598C30.9575 25.8953 30.4551 27.0976 29.4502 28.0666C28.4454 29.0355 27.1893 29.52 25.682 29.52C24.2465 29.52 23.0263 28.9638 22.0215 27.8512C21.0166 26.7387 20.5142 25.3391 20.5142 23.6523C20.5142 22.4322 20.7833 21.0864 21.3216 19.615C21.8959 18.1436 22.6316 16.6542 23.5288 15.1469C24.4618 13.6396 25.5026 12.1503 26.651 10.6789C27.8353 9.1716 29.0196 7.77197 30.2039 6.48001L31.6035 7.66431C29.9886 9.56637 28.6428 11.4864 27.5661 13.4243C26.5254 15.3623 25.8974 17.2643 25.682 19.1305C27.1175 19.2381 28.3557 19.7765 29.3964 20.7454C30.4372 21.7144 30.9575 22.9525 30.9575 24.4598Z" fill="#BCBAC7"/>
+            </svg>
+          </div>
+          
+          <p class="historia-quote">{{ historia.quote }}</p>
+          
+          <div class="historia-footer">
+            <img [src]="historia.logo" [alt]="historia.company" class="historia-logo">
+            <div class="historia-author-info">
+              <p class="historia-author">{{ historia.author }}</p>
+              <p class="historia-position">
+                {{ historia.position }} 
+                @if (historia.company) {
+                  <span>{{ historia.company }}</span>
+                }
+              </p>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+

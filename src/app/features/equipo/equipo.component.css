@@ -1,0 +1,225 @@
+.equipo-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: clamp(6rem, 10vh, 8rem) 0 clamp(4rem, 8vh, 6rem);
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+}
+
+/* Header de la sección */
+.equipo-header {
+  max-width: 600px;
+  margin-bottom: clamp(3rem, 6vh, 5rem);
+}
+
+.equipo-title {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.text-orange {
+  color: var(--color-accent-orange);
+}
+
+.equipo-description {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.btn-ver-todos {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+  background: transparent;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.btn-ver-todos:hover {
+  background-color: var(--color-secondary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.arrow-icon {
+  transition: transform var(--transition-normal);
+}
+
+.btn-ver-todos:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Grid de miembros del equipo */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  max-width: 1200px;
+}
+
+.team-card {
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor de foto circular */
+.team-photo-wrapper {
+  position: relative;
+  width: clamp(280px, 25vw, 400px);
+  height: clamp(280px, 25vw, 400px);
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transition: all var(--transition-normal);
+}
+
+.team-photo-wrapper:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Foto del abogado */
+.team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Filtro blanco y negro */
+  filter: grayscale(100%);
+  transition: filter var(--transition-normal);
+}
+
+.team-photo-wrapper:hover .team-photo {
+  filter: grayscale(80%);
+}
+
+/* Overlay con información */
+.team-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 33, 71, 0.95) 0%,
+    rgba(0, 33, 71, 0.85) 50%,
+    rgba(0, 33, 71, 0.4) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.team-photo-wrapper:hover .team-overlay {
+  opacity: 1;
+}
+
+/* Contenido del overlay */
+.overlay-content {
+  text-align: center;
+  color: white;
+  transform: translateY(20px);
+  transition: transform var(--transition-normal);
+}
+
+.team-photo-wrapper:hover .overlay-content {
+  transform: translateY(0);
+}
+
+.member-name {
+  font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.member-position {
+  font-size: clamp(0.9rem, 1vw, 1.125rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.btn-contact {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .team-photo-wrapper {
+    width: clamp(250px, 30vw, 350px);
+    height: clamp(250px, 30vw, 350px);
+  }
+}
+
+@media (max-width: 768px) {
+  .equipo-section {
+    padding: 5rem 0 3rem;
+    min-height: auto;
+  }
+
+  .equipo-header {
+    max-width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .team-photo-wrapper {
+    width: clamp(240px, 60vw, 320px);
+    height: clamp(240px, 60vw, 320px);
+  }
+
+  /* En mobile, mostrar overlay siempre o al tap */
+  .team-overlay {
+    opacity: 0;
+  }
+
+  .team-photo-wrapper:active .team-overlay,
+  .team-photo-wrapper.show-overlay .team-overlay {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-ver-todos {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .team-photo-wrapper {
+    width: min(280px, 80vw);
+    height: min(280px, 80vw);
+  }
+}
+

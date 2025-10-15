@@ -35,6 +35,16 @@ Imágenes de las tarjetas de servicios:
 - `placeholder.jpg` - Imagen por defecto (fallback)
 - Tamaño recomendado: 800x500px (ratio 16:10)
 
+### `/teams/`
+Fotos de los miembros del equipo:
+- `1.jpg` - Pablo A. Rengifo
+- `2.jpg` - Segundo abogado
+- `3.jpg` - Tercera abogada
+- `placeholder.jpg` - Foto por defecto (fallback)
+- Tamaño recomendado: 800x800px (ratio 1:1, cuadrado)
+- Formato: JPG
+- Nota: Se aplicará filtro blanco y negro automáticamente con CSS
+
 ## Instrucciones:
 1. Exporta las imágenes desde Figma
 2. Colócalas en las carpetas correspondientes con los nombres exactos
