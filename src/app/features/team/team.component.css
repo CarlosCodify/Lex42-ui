@@ -10,7 +10,6 @@
   width: 100%;
 }
 
-/* Header de la sección */
 .equipo-header {
   max-width: 600px;
   margin-bottom: clamp(3rem, 6vh, 5rem);
@@ -65,7 +64,6 @@
   transform: translateX(4px);
 }
 
-/* Grid de miembros del equipo */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -78,7 +76,6 @@
   justify-content: center;
 }
 
-/* Contenedor de foto circular */
 .team-photo-wrapper {
   position: relative;
   width: clamp(280px, 25vw, 400px);
@@ -95,12 +92,10 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
 
-/* Foto del abogado */
 .team-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Filtro blanco y negro */
   filter: grayscale(100%);
   transition: filter var(--transition-normal);
 }
@@ -109,7 +104,6 @@
   filter: grayscale(80%);
 }
 
-/* Overlay con información */
 .team-overlay {
   position: absolute;
   top: 0;
@@ -134,7 +128,6 @@
   opacity: 1;
 }
 
-/* Contenido del overlay */
 .overlay-content {
   text-align: center;
   color: white;
@@ -166,7 +159,6 @@
   border: none;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .team-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -200,7 +192,6 @@
     height: clamp(240px, 60vw, 320px);
   }
 
-  /* En mobile, mostrar overlay siempre o al tap */
   .team-overlay {
     opacity: 0;
   }

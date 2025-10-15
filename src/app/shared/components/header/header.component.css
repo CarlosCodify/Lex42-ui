@@ -74,7 +74,6 @@
   width: 100%;
 }
 
-/* Mobile menu toggle */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -105,7 +104,6 @@
   transform: rotate(-45deg) translateY(-8px);
 }
 
-/* Mobile menu */
 .mobile-menu {
   display: none;
   position: absolute;
@@ -148,7 +146,6 @@
   margin-top: 0.5rem;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .nav-menu {
     display: none;

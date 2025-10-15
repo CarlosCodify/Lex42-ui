@@ -1,6 +1,5 @@
 <section id="team" class="equipo-section">
   <div class="container">
-    <!-- Header de la sección -->
     <div class="equipo-header">
       <h2 class="equipo-title">
         Nuestros <span class="text-orange">abogados</span>
@@ -17,11 +16,9 @@
       </a>
     </div>
 
-    <!-- Grid de abogados -->
     <div class="team-grid">
       @for (member of teamMembers(); track member.id) {
         <article class="team-card">
-          <!-- Foto circular -->
           <div class="team-photo-wrapper" (click)="goToProfile(member)">
             <img 
               [src]="member.photo" 
@@ -30,7 +27,6 @@
               onerror="this.src='/assets/images/teams/placeholder.jpg'"
             >
             
-            <!-- Overlay con información al hover -->
             <div class="team-overlay">
               <div class="overlay-content">
                 <h3 class="member-name">{{ member.name }}</h3>

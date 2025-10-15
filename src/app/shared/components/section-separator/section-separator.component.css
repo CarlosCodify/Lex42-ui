@@ -9,7 +9,6 @@
   padding: 4rem 0;
 }
 
-/* Líneas decorativas verticales */
 .decorative-lines {
   position: absolute;
   top: 0;
@@ -31,7 +30,6 @@
   pointer-events: none;
 }
 
-/* Triángulos decorativos (todos a la derecha) */
 .geometric-shapes {
   position: absolute;
   top: 0;
@@ -61,7 +59,6 @@
   }
 }
 
-/* Triángulos - Tamaños y colores */
 .triangle-blue {
   border-width: 0 clamp(60px, 8vw, 100px) clamp(104px, 14vw, 173px) clamp(60px, 8vw, 100px);
   border-color: transparent transparent rgba(106, 185, 255, 0.5) transparent;
@@ -82,9 +79,7 @@
   border-color: transparent transparent rgba(171, 100, 0, 0.5) transparent;
 }
 
-/* Posiciones de triángulos (todos de mitad hacia la derecha) */
 .triangle-1 {
-  /* Triángulo azul GRANDE que se sale del borde */
   top: 20%;
   right: -80px;
   animation-delay: 0s;
@@ -109,7 +104,6 @@
   animation-delay: 0.8s;
 }
 
-/* Contenido */
 .separator-content {
   position: relative;
   z-index: 2;
@@ -120,7 +114,6 @@
   margin-left: 0;
 }
 
-/* Badge con comillas */
 .separator-badge {
   display: inline-flex;
   align-items: center;
@@ -139,7 +132,6 @@
   display: block;
 }
 
-/* Título principal */
 .separator-title {
   font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-weight: 700;
@@ -159,7 +151,6 @@
   color: #73BDFF;
 }
 
-/* Subtítulo */
 .separator-subtitle {
   font-size: clamp(1rem, 1.2vw, 1.25rem);
   color: var(--color-text-secondary);
@@ -168,7 +159,6 @@
   max-width: 800px;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .separator-content {
     padding: 0 clamp(2rem, 4vw, 4rem) 0 clamp(3rem, 6vw, 6rem);

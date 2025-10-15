@@ -13,7 +13,6 @@
   gap: clamp(2rem, 4vw, 4rem);
 }
 
-/* Logo Section */
 .footer-logo-section {
   display: flex;
   align-items: flex-start;
@@ -33,7 +32,6 @@
   width: auto;
 }
 
-/* Footer Sections */
 .footer-section {
   display: flex;
   flex-direction: column;
@@ -69,7 +67,6 @@
   transform: translateX(4px);
 }
 
-/* Footer Bottom */
 .footer-bottom {
   margin-top: clamp(2.5rem, 5vh, 3.5rem);
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -112,7 +109,6 @@
   color: #73BDFF;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .footer-container {
     grid-template-columns: 1fr 1fr;

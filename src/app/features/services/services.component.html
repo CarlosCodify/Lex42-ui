@@ -1,15 +1,12 @@
 <section id="services" class="servicios-section">
   <div class="container">
-    <!-- Grid de servicios -->
     <div class="servicios-grid">
-      <!-- Título principal -->
       <div class="servicios-header">
         <h2 class="servicios-title">
           Conoce<br>nuestros<br><span class="text-highlight">servicios</span>
         </h2>
       </div>
 
-      <!-- Derecho Laboral -->
       <article 
         class="servicio-card card-laboral" 
         [class.card-primary]="services()[0].variant === 'primary'"
@@ -20,7 +17,6 @@
             [alt]="services()[0].title"
             onerror="this.src='/assets/images/services/placeholder.jpg'"
           >
-          <!-- Badges -->
           @if (services()[0].badges && services()[0].badges!.length > 0) {
             <div class="card-badges">
               @for (badge of services()[0].badges; track badge) {
@@ -40,7 +36,6 @@
         </div>
       </article>
 
-      <!-- Derecho Comercial -->
       <article 
         class="servicio-card" 
         [class.card-primary]="services()[1].variant === 'primary'"
@@ -58,7 +53,6 @@
         </div>
       </article>
 
-      <!-- Gestión Predial -->
       <article 
         class="servicio-card" 
         [class.card-dark]="services()[3].variant === 'dark'"
@@ -76,7 +70,6 @@
         </div>
       </article>
 
-      <!-- Derecho Corporativo -->
       <article 
         class="servicio-card" 
         [class.card-dark]="services()[2].variant === 'dark'"
@@ -94,7 +87,6 @@
         </div>
       </article>
 
-      <!-- Ver todos -->
       <a href="#contacto" class="servicio-card card-view-all">
         <div class="view-all-content">
           <span class="view-all-text">Ver todos</span>

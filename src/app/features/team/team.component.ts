@@ -7,7 +7,7 @@ interface TeamMember {
   position: string;
   photo: string;
   email: string;
-  profileUrl?: string; // Para implementar después
+  profileUrl?: string;
 }
 
 @Component({
@@ -25,7 +25,7 @@ export class TeamComponent {
       position: 'Abogado',
       photo: '/assets/images/teams/1.jpg',
       email: 'pablo.rengifo@lex42.com',
-      profileUrl: '/team/pablo-rengifo' // Para implementar después
+      profileUrl: '/team/pablo-rengifo'
     },
     {
       id: 2,

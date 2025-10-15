@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-/* Grid de servicios - 3 columnas x 2 filas */
 .servicios-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -16,7 +15,6 @@
   width: 100%;
 }
 
-/* Header / Título - Columna 1, Fila 1 */
 .servicios-header {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -38,7 +36,6 @@
   color: var(--color-accent-blue);
 }
 
-/* Tarjetas de servicio */
 .servicio-card {
   background: white;
   border-radius: var(--radius-lg);
@@ -51,7 +48,6 @@
   height: 100%;
 }
 
-/* Invertir orden para tarjetas celestes: texto arriba, imagen abajo */
 .card-primary {
   flex-direction: column-reverse;
 }
@@ -61,32 +57,26 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* Posicionamiento específico según Figma */
-/* Derecho Laboral - Columna 1, Fila 2 */
 .card-laboral {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
 
-/* Derecho Comercial - Columna 2, Fila 1 */
 .servicio-card:nth-child(3) {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
 
-/* Gestión Predial - Columna 3, Fila 1 */
 .servicio-card:nth-child(4) {
   grid-column: 3 / 4;
   grid-row: 1 / 2;
 }
 
-/* Derecho Corporativo - Columna 2, Fila 2 */
 .servicio-card:nth-child(5) {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
 }
 
-/* Variantes de color */
 .card-primary,
 .card-dark {
   position: relative;
@@ -94,7 +84,6 @@
   background: transparent;
 }
 
-/* Imagen de la tarjeta */
 .card-image {
   position: relative;
   width: 100%;
@@ -120,7 +109,6 @@
   z-index: 1;
 }
 
-/* Overlay con gradiente sobre la imagen */
 .card-primary .card-image::after {
   content: '';
   position: absolute;
@@ -128,8 +116,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* Gradiente: transparente abajo (0-60% = imagen visible), sólido arriba (75%) */
-  /* Ajusta el 75% para mostrar más/menos imagen: ↑ = más imagen, ↓ = menos imagen */
   background: linear-gradient(0deg, rgba(0, 51, 113, 0) 0%, rgba(12, 92, 191, 0.3) 60%, #0C5CBF 75%);
   z-index: 2;
   pointer-events: none;
@@ -142,8 +128,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* Gradiente: transparente arriba (0-15% = imagen visible), sólido abajo (85%) */
-  /* Ajusta el 15% y 85% para mostrar más/menos imagen: 15↓ = más imagen arriba, 85↑ = más imagen abajo */
   background: linear-gradient(180deg, rgba(0, 51, 113, 0) 0%, rgba(0, 51, 113, 0.3) 15%, #003371 85%);
   z-index: 2;
   pointer-events: none;
@@ -153,7 +137,6 @@
   transform: scale(1.05);
 }
 
-/* Badges */
 .card-badges {
   position: absolute;
   bottom: 1rem;
@@ -185,7 +168,6 @@
   display: block;
 }
 
-/* Contenido de la tarjeta */
 .card-content {
   padding: clamp(1rem, 1.5vw, 1.25rem) clamp(1rem, 1.5vw, 1.5rem);
   flex: 1;
@@ -194,10 +176,9 @@
   justify-content: center;
   position: relative;
   z-index: 3;
-  min-height: 0; /* Permite que el flex respete el contenido */
+  min-height: 0;
 }
 
-/* Fondo del contenido para tarjetas con color */
 .card-primary .card-content {
   background: #0C5CBF;
   padding-top: clamp(1.25rem, 2vh, 1.5rem);
@@ -240,7 +221,6 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
-/* Tarjeta Ver Todos - Columna 3, Fila 2 */
 .card-view-all {
   background: #1E72CC;
   color: white;
@@ -285,7 +265,6 @@
   transform: translateX(8px);
 }
 
-/* Responsive */
 @media (max-width: 1200px) {
   .servicios-grid {
     gap: 1rem;
