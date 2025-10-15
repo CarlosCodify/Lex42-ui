@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   protected readonly menuItems = signal([
-    { label: 'Servicios', link: '#servicios' },
-    { label: 'Equipo', link: '#equipo' },
+    { label: 'Servicios', link: '#services' },
+    { label: 'Equipo', link: '#team' },
     { label: 'Noticias', link: '#noticias' },
     { label: 'La Firma', link: '#la-firma' }
   ]);

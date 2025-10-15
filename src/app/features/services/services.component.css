@@ -1,12 +1,10 @@
 .servicios-section {
-  height: 100vh;
-  min-height: 700px;
-  max-height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: clamp(80px, 10vh, 120px) 0 clamp(40px, 6vh, 80px);
+  padding: clamp(5rem, 8vh, 6rem) 0 clamp(2rem, 4vh, 3rem);
   display: flex;
   align-items: center;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* Grid de servicios - 3 columnas x 2 filas */
@@ -15,8 +13,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: clamp(1rem, 1.5vw, 1.5rem);
-  max-height: calc(100vh - 200px);
-  height: calc(100vh - 200px);
+  width: 100%;
 }
 
 /* Header / Título - Columna 1, Fila 1 */
@@ -54,6 +51,11 @@
   height: 100%;
 }
 
+/* Invertir orden para tarjetas celestes: texto arriba, imagen abajo */
+.card-primary {
+  flex-direction: column-reverse;
+}
+
 .servicio-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
@@ -85,28 +87,26 @@
 }
 
 /* Variantes de color */
-.card-primary {
-  background: linear-gradient(135deg, #0A9FE5 0%, #0882c7 100%);
-  color: white;
-}
-
+.card-primary,
 .card-dark {
-  background: linear-gradient(135deg, #002147 0%, #001530 100%);
+  position: relative;
   color: white;
+  background: transparent;
 }
 
 /* Imagen de la tarjeta */
 .card-image {
   position: relative;
   width: 100%;
-  padding-top: 50%;
+  padding-top: 45%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .card-large .card-image {
-  padding-top: 60%;
+  padding-top: 55%;
   flex: 1;
-  max-height: 60%;
+  max-height: 55%;
 }
 
 .card-image img {
@@ -117,6 +117,36 @@
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-slow);
+  z-index: 1;
+}
+
+/* Overlay con gradiente sobre la imagen */
+.card-primary .card-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Gradiente: transparente abajo (0-60% = imagen visible), sólido arriba (75%) */
+  /* Ajusta el 75% para mostrar más/menos imagen: ↑ = más imagen, ↓ = menos imagen */
+  background: linear-gradient(0deg, rgba(0, 51, 113, 0) 0%, rgba(12, 92, 191, 0.3) 60%, #0C5CBF 75%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.card-dark .card-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Gradiente: transparente arriba (0-15% = imagen visible), sólido abajo (85%) */
+  /* Ajusta el 15% y 85% para mostrar más/menos imagen: 15↓ = más imagen arriba, 85↑ = más imagen abajo */
+  background: linear-gradient(180deg, rgba(0, 51, 113, 0) 0%, rgba(0, 51, 113, 0.3) 15%, #003371 85%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .servicio-card:hover .card-image img {
@@ -132,6 +162,7 @@
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  z-index: 3;
 }
 
 .badge {
@@ -150,23 +181,43 @@
 .badge-icon {
   width: 16px;
   height: 16px;
-  stroke: var(--color-secondary);
+  flex-shrink: 0;
+  display: block;
 }
 
 /* Contenido de la tarjeta */
 .card-content {
-  padding: clamp(1.25rem, 1.75vw, 1.75rem);
+  padding: clamp(1rem, 1.5vw, 1.25rem) clamp(1rem, 1.5vw, 1.5rem);
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  min-height: 0; /* Permite que el flex respete el contenido */
+}
+
+/* Fondo del contenido para tarjetas con color */
+.card-primary .card-content {
+  background: #0C5CBF;
+  padding-top: clamp(1.25rem, 2vh, 1.5rem);
+  padding-bottom: clamp(1rem, 2vh, 1.25rem);
+}
+
+.card-dark .card-content {
+  background: #003371;
+  padding-top: clamp(1.25rem, 2vh, 1.5rem);
+  padding-bottom: clamp(1rem, 2vh, 1.25rem);
 }
 
 .card-title {
-  font-size: clamp(1.15rem, 1.4vw, 1.5rem);
+  font-size: clamp(1rem, 1.25vw, 1.3rem);
   font-weight: 700;
-  margin: 0 0 clamp(0.75rem, 1vw, 1rem) 0;
+  margin: 0 0 clamp(0.5rem, 0.75vw, 0.75rem) 0;
   color: inherit;
   line-height: 1.2;
+  position: relative;
+  z-index: 1;
 }
 
 .card-primary .card-title,
@@ -175,21 +226,23 @@
 }
 
 .card-description {
-  font-size: clamp(0.85rem, 0.95vw, 0.95rem);
-  line-height: 1.5;
+  font-size: clamp(0.8rem, 0.85vw, 0.875rem);
+  line-height: 1.4;
   margin: 0;
   color: inherit;
   opacity: 0.95;
+  position: relative;
+  z-index: 1;
 }
 
 .card-primary .card-description,
 .card-dark .card-description {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* Tarjeta Ver Todos - Columna 3, Fila 2 */
 .card-view-all {
-  background: linear-gradient(135deg, #0A9FE5 0%, #0882c7 100%);
+  background: #1E72CC;
   color: white;
   display: flex;
   align-items: center;
@@ -199,10 +252,12 @@
   text-decoration: none;
   grid-column: 3 / 4;
   grid-row: 2 / 3;
+  transition: all var(--transition-normal);
 }
 
 .card-view-all:hover {
-  background: linear-gradient(135deg, #0882c7 0%, #0A9FE5 100%);
+  background: #0C5CBF;
+  transform: translateY(-8px);
 }
 
 .view-all-content {
@@ -271,10 +326,8 @@
 
 @media (max-width: 968px) {
   .servicios-section {
-    height: auto;
-    min-height: 100vh;
+    min-height: auto;
     padding: clamp(80px, 10vh, 100px) 0 clamp(40px, 6vh, 60px);
-    overflow: visible;
   }
 
   .servicios-header {
@@ -288,9 +341,6 @@
   .servicios-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    max-height: none;
-    height: auto;
-    overflow-y: visible;
   }
 
   .servicios-header,

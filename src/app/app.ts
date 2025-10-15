@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { InicioComponent } from './features/inicio/inicio.component';
-import { ServiciosComponent } from './features/servicios/servicios.component';
+import { HomeComponent } from './features/home/home.component';
+import { ServicesComponent } from './features/services/services.component';
 import { SectionSeparatorComponent } from './shared/components/section-separator/section-separator.component';
-import { EquipoComponent } from './features/equipo/equipo.component';
+import { TeamComponent } from './features/team/team.component';
 import { CtaSectionComponent } from './shared/components/cta-section/cta-section.component';
-import { HistoriasComponent } from './features/historias/historias.component';
+import { StoriesComponent } from './features/stories/stories.component';
 import { LexTipsComponent } from './features/lex-tips/lex-tips.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 
@@ -13,12 +13,12 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   selector: 'app-root',
   imports: [
     HeaderComponent, 
-    InicioComponent, 
-    ServiciosComponent, 
+    HomeComponent, 
+    ServicesComponent, 
     SectionSeparatorComponent, 
-    EquipoComponent,
+    TeamComponent,
     CtaSectionComponent,
-    HistoriasComponent,
+    StoriesComponent,
     LexTipsComponent,
     FooterComponent
   ],

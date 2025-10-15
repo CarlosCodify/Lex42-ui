@@ -12,13 +12,13 @@ interface Testimonial {
 }
 
 @Component({
-  selector: 'app-inicio',
+  selector: 'app-home',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './inicio.component.html',
-  styleUrl: './inicio.component.css'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class InicioComponent {
+export class HomeComponent {
   protected readonly testimonials = signal<Testimonial[]>([
     {
       id: 1,

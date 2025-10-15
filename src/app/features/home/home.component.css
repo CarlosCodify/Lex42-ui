@@ -10,7 +10,6 @@
   flex-direction: column;
 }
 
-/* Elementos decorativos geométricos */
 .geometric-shapes {
   position: absolute;
   top: 0;
@@ -39,22 +38,13 @@
   }
 }
 
-/* CONFIGURACIÓN DE TRIÁNGULOS */
-/* Puedes modificar estos valores para ajustar tamaño y posición */
-
-/* NOTA: Los triángulos CSS con border no soportan gradientes directamente */
-/* Usa colores sólidos aproximados a los gradientes del Figma */
-
 .triangle-blue {
-  /* Tamaño: modifica los valores para hacerlo más grande/pequeño */
   border-width: 0 clamp(60px, 8vw, 100px) clamp(104px, 14vw, 173px) clamp(60px, 8vw, 100px);
-  /* Color azul aproximado del gradiente #6AB9FF a #406F99 */
   border-color: transparent transparent rgba(106, 185, 255, 0.5) transparent;
 }
 
 .triangle-orange {
   border-width: 0 clamp(50px, 7vw, 90px) clamp(87px, 12vw, 156px) clamp(50px, 7vw, 90px);
-  /* Color naranja aproximado del gradiente #AB6400 a #452800 */
   border-color: transparent transparent rgba(171, 100, 0, 0.6) transparent;
 }
 
@@ -67,9 +57,6 @@
   border-width: 0 clamp(20px, 3vw, 35px) clamp(35px, 5vw, 61px) clamp(20px, 3vw, 35px);
   border-color: transparent transparent rgba(171, 100, 0, 0.5) transparent;
 }
-
-/* POSICIONES DE TRIÁNGULOS */
-/* Modifica top/left/right para cambiar la posición */
 
 .triangle-1 {
   top: 25%;    /* Distancia desde arriba (0-100%) */
@@ -85,7 +72,7 @@
 
 .triangle-3 {
   top: 20%;
-  right: 25%;  /* Distancia desde la derecha */
+  right: 25%;
   animation-delay: 2s;
 }
 
@@ -107,7 +94,6 @@
   animation-delay: 2.5s;
 }
 
-/* Contenedor principal del hero */
 .hero-container {
   flex: 1;
   display: flex;
@@ -121,7 +107,6 @@
   padding-bottom: 1vh;
 }
 
-/* 1. SECCIÓN DE TÍTULOS */
 .hero-titles-section {
   text-align: center;
   max-width: 900px;
@@ -158,7 +143,6 @@
   font-weight: 300;
 }
 
-/* 2. SECCIÓN DE BOTÓN */
 .hero-button-section {
   display: flex;
   justify-content: center;
@@ -170,7 +154,6 @@
   font-size: clamp(0.9rem, 1.1vw, 1.125rem);
 }
 
-/* 3. SECCIÓN DE TESTIMONIOS */
 .testimonials-section {
   position: relative;
   width: 100%;
@@ -193,7 +176,6 @@
   backdrop-filter: blur(10px);
 }
 
-/* Posiciones específicas de cada testimonio */
 .testimonial-left {
   bottom: 10px;
   left: -35%;
@@ -210,7 +192,6 @@
   right: -35%;
 }
 
-/* Avatar con fondo azul */
 .testimonial-avatar-wrapper {
   position: relative;
   flex-shrink: 0;
@@ -289,7 +270,6 @@
   height: clamp(12px, 1.2vw, 14px);
 }
 
-/* 4. SECCIÓN DE CLIENTES */
 .clients-section {
   background-color: rgba(0, 15, 30, 0.4);
   padding: clamp(1.5rem, 3vh, 3rem) 0;
@@ -333,7 +313,6 @@
   opacity: 1;
 }
 
-/* Responsive */
 @media (max-width: 1400px) {
   .testimonial-left {
     left: -25%;

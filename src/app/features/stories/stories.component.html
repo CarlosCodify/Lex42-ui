@@ -10,7 +10,7 @@
     </div>
 
     <div class="historias-grid">
-      @for (historia of historias(); track historia.author) {
+      @for (story of stories(); track story.author) {
         <article class="historia-card">
           <div class="quote-icon">
             <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -18,16 +18,16 @@
             </svg>
           </div>
           
-          <p class="historia-quote">{{ historia.quote }}</p>
+          <p class="historia-quote">{{ story.quote }}</p>
           
           <div class="historia-footer">
-            <img [src]="historia.logo" [alt]="historia.company" class="historia-logo">
+            <img [src]="story.logo" [alt]="story.company" class="historia-logo">
             <div class="historia-author-info">
-              <p class="historia-author">{{ historia.author }}</p>
+              <p class="historia-author">{{ story.author }}</p>
               <p class="historia-position">
-                {{ historia.position }} 
-                @if (historia.company) {
-                  <span>{{ historia.company }}</span>
+                {{ story.position }} 
+                @if (story.company) {
+                  <span>{{ story.company }}</span>
                 }
               </p>
             </div>

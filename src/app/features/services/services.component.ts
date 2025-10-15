@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-interface Servicio {
+interface Service {
   id: number;
   title: string;
   description: string;
@@ -12,14 +12,14 @@ interface Servicio {
 }
 
 @Component({
-  selector: 'app-servicios',
+  selector: 'app-services',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './servicios.component.html',
-  styleUrl: './servicios.component.css'
+  templateUrl: './services.component.html',
+  styleUrl: './services.component.css'
 })
-export class ServiciosComponent {
-  protected readonly servicios = signal<Servicio[]>([
+export class ServicesComponent {
+  protected readonly services = signal<Service[]>([
     {
       id: 1,
       title: 'Derecho Laboral',

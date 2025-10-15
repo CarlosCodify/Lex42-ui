@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-interface Historia {
+interface Story {
   quote: string;
   author: string;
   position: string;
@@ -9,13 +9,13 @@ interface Historia {
 }
 
 @Component({
-  selector: 'app-historias',
+  selector: 'app-stories',
   imports: [],
-  templateUrl: './historias.component.html',
-  styleUrl: './historias.component.css'
+  templateUrl: './stories.component.html',
+  styleUrl: './stories.component.css'
 })
-export class HistoriasComponent {
-  protected readonly historias = signal<Historia[]>([
+export class StoriesComponent {
+  protected readonly stories = signal<Story[]>([
     {
       quote: 'Con Lex 42 contamos con asesoría permanente. Nos apoyamos en su equipo para diseñar nuestros esquemas de contratación en nuevos proyectos y para adaptar la empresa a los constantes cambios regulatorios.',
       author: 'Jacobo Riascos',
