@@ -86,12 +86,12 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--color-secondary);
+  background-color: #0078D4;
   color: var(--color-text-primary);
 }
 
 .btn-primary:hover {
-  background-color: #0882c7;
+  background-color: #106ebe;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }

@@ -21,27 +21,27 @@ export class TeamComponent {
   protected readonly teamMembers = signal<TeamMember[]>([
     {
       id: 1,
-      name: 'Pablo A. Rengifo',
-      position: 'Abogado',
+      name: 'Juan S. Aguilar',
+      position: 'Socio Fundador Laboral',
       photo: '/assets/images/teams/1.jpg',
-      email: 'pablo.rengifo@lex42.com',
-      profileUrl: '/team/pablo-rengifo'
+      email: 'juanseaguilar@lex42.co',
+      profileUrl: '/team/juan-aguilar'
     },
     {
       id: 2,
-      name: 'Juan Pérez',
-      position: 'Abogado Senior',
+      name: 'Pablo A. Rengifo',
+      position: 'Socio Fundador Comercial',
       photo: '/assets/images/teams/2.jpg',
-      email: 'juan.perez@lex42.com',
-      profileUrl: '/team/juan-perez'
+      email: 'pablorengifo@lex42.co',
+      profileUrl: '/team/pablo-rengifo'
     },
     {
       id: 3,
-      name: 'María González',
-      position: 'Abogada Especialista',
+      name: 'Veronica Rengifo',
+      position: 'Asociada Senior',
       photo: '/assets/images/teams/3.jpg',
-      email: 'maria.gonzalez@lex42.com',
-      profileUrl: '/team/maria-gonzalez'
+      email: 'contacto@lex42.co',
+      profileUrl: '/team/veronica-rengifo'
     }
   ]);
 

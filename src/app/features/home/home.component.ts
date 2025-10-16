@@ -22,7 +22,7 @@ export class HomeComponent {
   protected readonly testimonials = signal<Testimonial[]>([
     {
       id: 1,
-      avatar: '/assets/images/testimonials/avatar-1.svg',
+      avatar: '/assets/images/testimonials/avatar-2.png',
       quote: 'Tu tranquilidad jurídica es nuestra prioridad',
       author: 'Lex 42',
       company: '',
@@ -31,7 +31,7 @@ export class HomeComponent {
     },
     {
       id: 2,
-      avatar: '/assets/images/testimonials/avatar-2.png',
+      avatar: '/assets/images/testimonials/avatar-1.svg',
       quote: 'Con Lex 42 tomamos decisiones con tranquilidad y claridad. Siempre entienden lo que necesitamos.',
       author: 'Yolver Gutierrez',
       company: '',
