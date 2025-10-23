@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './features/home/home.component';
 import { ServicesComponent } from './features/services/services.component';
@@ -8,6 +8,7 @@ import { CtaSectionComponent } from './shared/components/cta-section/cta-section
 import { StoriesComponent } from './features/stories/stories.component';
 import { LexTipsComponent } from './features/lex-tips/lex-tips.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { SeoService } from './shared/services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -25,5 +26,10 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit() {
+    this.seoService.setDefaultMetaTags();
+  }
 }
