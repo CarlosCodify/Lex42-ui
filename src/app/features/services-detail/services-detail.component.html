@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="geometric-shapes">
+    <div class="triangle triangle-blue triangle-1"></div>
+    <div class="triangle triangle-orange triangle-2"></div>
+    <div class="triangle triangle-blue-small triangle-3"></div>
+    <div class="triangle triangle-orange-small triangle-4"></div>
+    <div class="triangle triangle-blue-small triangle-5"></div>
+    <div class="triangle triangle-orange triangle-6"></div>
+  </div>
+  
+  <div class="container hero-container">
+    <div class="hero-titles-section">
+      <h1 class="hero-title">
+        <span class="text-blue">Servicios Legales</span> para proteger y hacer crecer tu empresa
+      </h1>
+      <p class="hero-description">
+        En Lex42 abordamos los desafíos legales de tu negocio con precisión, claridad y visión estratégica. 
+        Descubre cómo podemos ayudarte en áreas clave como el derecho laboral, corporativo y comercial.
+      </p>
+    </div>
+
+    <div class="hero-button-section">
+      <a href="mailto:contacto@lex42.co?subject=Solicitud de Consulta" class="btn btn-primary btn-large">
+        Agenda una consulta
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+  <div class="container">
+    <div class="services-header">
+      <h2 class="services-title">
+        <span class="title-blue">Nuestros </span> <span class="title-orange">servicios</span>
+      </h2>
+      <p class="services-description">
+        Diseñamos acompañamientos legales que protegen tu empresa y potencian su crecimiento, 
+        desde la contratación hasta la expansión.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      @for (service of services(); track service.id) {
+        <article 
+          class="service-card"
+          [class.card-expanded]="service.expanded"
+          [attr.data-service-id]="service.id"
+          (click)="toggleService(service.id)"
+        >
+          <div class="card-content">
+            <h3 class="card-title">{{ service.title }}</h3>
+            <p class="card-description">{{ service.description }}</p>
+            
+            @if (service.expanded) {
+              <div class="card-expanded-content">
+                <div class="card-detailed-description" [innerHTML]="service.detailedDescription | nl2br"></div>
+              </div>
+            }
+          </div>
+          
+          @if (service.expanded) {
+            <div class="card-rocket-icon">
+              <img src="/assets/images/utils/rocket-02.svg" alt="Rocket" class="rocket-icon">
+            </div>
+          }
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
