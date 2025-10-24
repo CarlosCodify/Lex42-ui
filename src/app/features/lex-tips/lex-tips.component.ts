@@ -9,6 +9,7 @@ interface FaqItem {
 
 @Component({
   selector: 'app-lex-tips',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './lex-tips.component.html',
   styleUrl: './lex-tips.component.css'

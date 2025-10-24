@@ -3,6 +3,10 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { CtaSectionComponent } from '../../shared/components/cta-section/cta-section.component';
+import { ApproachSectionComponent } from './approach/approach-section.component';
+import { StoriesComponent } from '../stories/stories.component';
+import { LexTipsComponent } from '../lex-tips/lex-tips.component';
 import { Nl2brPipe } from '../../shared/pipes/nl2br.pipe';
 
 interface ServiceDetail {
@@ -20,7 +24,7 @@ interface ServiceDetail {
 @Component({
   selector: 'app-services-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent, Nl2brPipe],
+  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent, CtaSectionComponent, ApproachSectionComponent, StoriesComponent, LexTipsComponent, Nl2brPipe],
   templateUrl: './services-detail.component.html',
   styleUrl: './services-detail.component.css'
 })

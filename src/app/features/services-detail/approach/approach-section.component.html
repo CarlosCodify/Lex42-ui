@@ -1,0 +1,26 @@
+<section class="approach-section">
+  <div class="container">
+    <div class="approach-header">
+      <h2 class="approach-title">
+        <span class="title-blue">Nuestro </span> <span class="title-orange">enfoque</span>
+      </h2>
+      <p class="approach-description">
+        No nos perdemos en tecnicismos. Entendemos tu negocio, priorizamos riesgos y construimos soluciones legales que se adaptan a ti.
+      </p>
+    </div>
+
+    <div class="approach-grid">
+      @for (card of approachCards; track card.id) {
+        <div class="approach-card">
+          <div class="card-image">
+            <img [src]="card.image" [alt]="card.title" class="card-icon">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">{{ card.title }}</h3>
+            <p class="card-description">{{ card.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
