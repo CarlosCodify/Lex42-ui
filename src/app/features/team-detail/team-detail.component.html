@@ -1,0 +1,198 @@
+<app-header></app-header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="geometric-shapes">
+    <div class="triangle triangle-blue triangle-1"></div>
+    <div class="triangle triangle-orange triangle-2"></div>
+    <div class="triangle triangle-blue-small triangle-3"></div>
+    <div class="triangle triangle-orange-small triangle-4"></div>
+    <div class="triangle triangle-blue-small triangle-5"></div>
+    <div class="triangle triangle-orange triangle-6"></div>
+  </div>
+  
+  <div class="container hero-container">
+    <div class="hero-titles-section">
+      <h1 class="hero-title">
+        <span class="text-blue">Profesionales que entienden tu negocio</span>, no solo abogados.
+      </h1>
+      <p class="hero-description">
+        Detrás de cada solución legal hay un equipo que escucha, piensa contigo y actúa rápido. 
+        Conoce a los abogados que harán que tu empresa avance con respaldo jurídico.
+      </p>
+    </div>
+
+    <div class="hero-button-section">
+      <a href="mailto:contacto@lex42.co?subject=Solicitud de Consulta" class="btn btn-primary btn-large">
+        Agenda una consulta
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section">
+  <div class="container">
+    <div class="team-header">
+      <h2 class="team-title">
+        <span class="title-blue">Nuestro </span> <span class="title-orange">equipo legal</span>
+      </h2>
+      <p class="team-description">
+        Especialistas en derecho laboral, comercial y corporativo que entienden tus retos y 
+        diseñan soluciones claras, prácticas y personalizadas.
+      </p>
+    </div>
+
+    <div class="team-grid">
+      @for (member of teamMembers(); track member.id) {
+        <article 
+          class="team-card"
+          [attr.data-member-id]="member.id"
+        >
+          <div class="card-content">
+            <div class="member-photo">
+              <img [src]="member.photo" [alt]="member.name" class="photo">
+            </div>
+            
+            <h3 class="member-name">{{ member.name }}</h3>
+            
+            <div class="member-details">
+              <div class="detail-item">
+                <img src="/assets/images/utils/tag-02.svg" alt="Rol" class="detail-icon">
+                <span class="detail-label">Rol:</span>
+                <span class="detail-value">{{ member.role }}</span>
+              </div>
+              
+              <div class="detail-item">
+                <img src="/assets/images/utils/Icon.svg" alt="Correo" class="detail-icon">
+                <span class="detail-label">Correo:</span>
+                <span class="detail-value">{{ member.email }}</span>
+              </div>
+              
+              @if (member.linkedinUrl) {
+                <div class="detail-item">
+                  <img src="/assets/images/utils/Linkedin.svg" alt="LinkedIn" class="detail-icon">
+                  <span class="detail-label">LinkedIn:</span>
+                  <a href="{{ member.linkedinUrl }}" target="_blank" class="detail-link" (click)="$event.stopPropagation()">Ver perfil</a>
+                </div>
+              }
+              
+              <div class="detail-item">
+                <img src="/assets/images/utils/ubic.svg" alt="Ubicación" class="detail-icon">
+                <span class="detail-label">Ubicación:</span>
+                <span class="detail-value">{{ member.location }}</span>
+              </div>
+            </div>
+            
+            <div class="member-background">
+              <p>{{ member.background }}</p>
+            </div>
+            
+            <div class="card-actions">
+              <button class="btn btn-primary btn-ver-mas" (click)="openMemberModal(member); $event.stopPropagation()">
+                Ver más
+              </button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-section></app-cta-section>
+
+<app-footer></app-footer>
+
+<!-- Modal de Perfil -->
+@if (selectedMember()) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2 class="modal-title">Perfil</h2>
+        <button class="modal-close" (click)="closeModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M18 6L6 18M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="modal-left">
+          <div class="modal-photo-section">
+            <div class="modal-photo">
+              <img [src]="selectedMember()!.photo" [alt]="selectedMember()!.name" class="modal-photo-img">
+            </div>
+            
+            <h3 class="modal-member-name">{{ selectedMember()!.name }}</h3>
+            
+            <div class="modal-details">
+              <div class="modal-detail-item">
+                <img src="/assets/images/utils/tag-02.svg" alt="Rol" class="modal-detail-icon">
+                <span class="modal-detail-label">Rol:</span>
+                <span class="modal-detail-value">{{ selectedMember()!.role }}</span>
+              </div>
+              
+              <div class="modal-detail-item">
+                <img src="/assets/images/utils/Icon.svg" alt="Correo" class="modal-detail-icon">
+                <span class="modal-detail-label">Correo:</span>
+                <span class="modal-detail-value">{{ selectedMember()!.email }}</span>
+              </div>
+              
+              @if (selectedMember()!.linkedinUrl) {
+                <div class="modal-detail-item">
+                  <img src="/assets/images/utils/Linkedin.svg" alt="LinkedIn" class="modal-detail-icon">
+                  <span class="modal-detail-label">LinkedIn:</span>
+                  <a [href]="selectedMember()!.linkedinUrl" target="_blank" class="modal-detail-link">Ver perfil</a>
+                </div>
+              }
+              
+              <div class="modal-detail-item">
+                <img src="/assets/images/utils/ubic.svg" alt="Ubicación" class="modal-detail-icon">
+                <span class="modal-detail-label">Ubicación:</span>
+                <span class="modal-detail-value">{{ selectedMember()!.location }}</span>
+              </div>
+            </div>
+            
+            <div class="modal-education">
+              <p>{{ selectedMember()!.background }}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-right">
+          @for (section of selectedMember()!.professionalSections; track section.title) {
+            <div class="modal-section">
+              <h4 class="modal-section-title">{{ section.title }}</h4>
+              @if (section.content) {
+                <p class="modal-section-text" [innerHTML]="section.content | nl2br"></p>
+              }
+              @if (section.items && section.items.length > 0) {
+                <ul class="modal-list">
+                  @for (item of section.items; track item) {
+                    <li>{{ item }}</li>
+                  }
+                </ul>
+              }
+              @if (section.content2) {
+                <p class="modal-section-text" [innerHTML]="section.content2 | nl2br"></p>
+              }
+              @if (section.items2 && section.items2.length > 0) {
+                <ul class="modal-list">
+                  @for (item of section.items2; track item) {
+                    <li>{{ item }}</li>
+                  }
+                </ul>
+              }
+            </div>
+          }
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button class="btn btn-outline-primary modal-btn" (click)="closeModal()">Cerrar</button>
+        <button class="btn btn-primary modal-btn" (click)="openEmail(selectedMember()!.email)">Agenda una consulta</button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 interface TeamMember {
   id: number;
@@ -13,7 +14,7 @@ interface TeamMember {
 @Component({
   selector: 'app-team',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './team.component.html',
   styleUrl: './team.component.css'
 })
