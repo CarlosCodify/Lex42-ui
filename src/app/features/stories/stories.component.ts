@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 interface Story {
   quote: string;
@@ -10,7 +11,8 @@ interface Story {
 
 @Component({
   selector: 'app-stories',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './stories.component.html',
   styleUrl: './stories.component.css'
 })

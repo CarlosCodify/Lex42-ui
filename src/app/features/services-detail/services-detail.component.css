@@ -46,7 +46,7 @@
 
 .triangle-orange {
   border-width: 0 clamp(25px, 3.5vw, 50px) clamp(40px, 6vw, 80px) clamp(25px, 3.5vw, 50px);
-  border-color: transparent transparent rgba(171, 100, 0, 0.6) transparent;
+  border-color: transparent transparent rgba(158, 108, 0, 0.6) transparent;
 }
 
 .triangle-blue-small {
@@ -56,7 +56,7 @@
 
 .triangle-orange-small {
   border-width: 0 clamp(12px, 1.5vw, 20px) clamp(18px, 2.5vw, 30px) clamp(12px, 1.5vw, 20px);
-  border-color: transparent transparent rgba(171, 100, 0, 0.5) transparent;
+  border-color: transparent transparent rgba(158, 108, 0, 0.5) transparent;
 }
 
 .triangle-1 {
@@ -186,7 +186,7 @@
 }
 
 .title-orange {
-  color: #FF8C00;
+  color: #9E6C00;
 }
 
 .services-description {

@@ -5,6 +5,7 @@ import { HeaderComponent } from '../../shared/components/header/header.component
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { CtaSectionComponent } from '../../shared/components/cta-section/cta-section.component';
 import { Nl2brPipe } from '../../shared/pipes/nl2br.pipe';
+import { StoriesComponent } from '../stories/stories.component';
 
 interface ProfessionalSection {
   title: string;
@@ -29,7 +30,7 @@ interface TeamMemberDetail {
 @Component({
   selector: 'app-team-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent, CtaSectionComponent, Nl2brPipe],
+  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent, StoriesComponent, CtaSectionComponent, Nl2brPipe],
   templateUrl: './team-detail.component.html',
   styleUrl: './team-detail.component.css'
 })

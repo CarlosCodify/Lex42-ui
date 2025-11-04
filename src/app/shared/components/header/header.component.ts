@@ -27,6 +27,13 @@ export class HeaderComponent {
   scrollToSection(event: Event, link: string): void {
     event.preventDefault();
     
+    // Si el link es para noticias, navegar directamente
+    if (link === '#noticias' || link === '/noticias') {
+      this.router.navigate(['/noticias']);
+      this.isMenuOpen.set(false);
+      return;
+    }
+    
     // Si estamos en la página de servicios, navegar al home primero
     if (this.router.url === '/servicios') {
       this.router.navigate(['/']).then(() => {

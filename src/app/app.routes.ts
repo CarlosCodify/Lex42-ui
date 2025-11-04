@@ -12,5 +12,9 @@ export const routes: Routes = [
   {
     path: 'equipo',
     loadComponent: () => import('./features/team-detail/team-detail.component').then(m => m.TeamDetailComponent)
+  },
+  {
+    path: 'noticias',
+    loadComponent: () => import('./features/news/news.component').then(m => m.NewsComponent)
   }
 ];

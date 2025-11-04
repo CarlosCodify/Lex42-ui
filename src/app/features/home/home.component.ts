@@ -9,6 +9,7 @@ interface Testimonial {
   company: string;
   rating: number;
   position: { top?: string; bottom?: string; left?: string; right?: string; transform?: string; };
+  svg: string;
 }
 
 @Component({
@@ -27,7 +28,8 @@ export class HomeComponent {
       author: 'Lex 42',
       company: '',
       rating: 5,
-      position: {}
+      position: {},
+      svg: '/assets/images/utils/briefcase-01.svg'
     },
     {
       id: 2,
@@ -36,7 +38,8 @@ export class HomeComponent {
       author: 'Yolver Gutierrez',
       company: '',
       rating: 5,
-      position: {}
+      position: {},
+      svg: '/assets/images/utils/user-circle.svg'
     },
     {
       id: 3,
@@ -45,7 +48,8 @@ export class HomeComponent {
       author: 'Galvanizados de Occidente',
       company: '',
       rating: 5,
-      position: {}
+      position: {},
+      svg: '/assets/images/utils/briefcase-01.svg'
     }
   ]);
 

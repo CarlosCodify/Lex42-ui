@@ -8,6 +8,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  /* Ancho de referencia 1440px para calcular tamaños en vw */
 }
 
 .geometric-shapes {
@@ -27,71 +28,102 @@
   border-style: solid;
   opacity: 0.6;
   animation: float 8s ease-in-out infinite;
+  animation-fill-mode: both; /* Aplica el 0% durante el delay y conserva el 100% */
+  /* Asegura que el primer paint coincida con el 0% de la animación */
+  transform: translateY(0) rotate(var(--rotate, 0deg));
+  will-change: transform;
+  backface-visibility: hidden;
+  /* Variables por triángulo para tamaño y rotación */
+  --w: clamp(60px, 8vw, 100px);   /* semi-ancho por defecto */
+  --h: clamp(104px, 14vw, 173px); /* altura por defecto */
+  --rotate: 0deg;                 /* rotación base por defecto */
+  border-width: 0 var(--w) var(--h) var(--w);
 }
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(var(--rotate, 0deg));
   }
   50% {
-    transform: translateY(-20px) rotate(3deg);
+    transform: translateY(-20px) rotate(calc(var(--rotate, 0deg) + 3deg));
   }
 }
 
 .triangle-blue {
-  border-width: 0 clamp(60px, 8vw, 100px) clamp(104px, 14vw, 173px) clamp(60px, 8vw, 100px);
   border-color: transparent transparent rgba(106, 185, 255, 0.5) transparent;
 }
 
 .triangle-orange {
-  border-width: 0 clamp(50px, 7vw, 90px) clamp(87px, 12vw, 156px) clamp(50px, 7vw, 90px);
-  border-color: transparent transparent rgba(171, 100, 0, 0.6) transparent;
+  border-color: transparent transparent rgba(158, 108, 0, 0.6) transparent;
 }
 
 .triangle-blue-small {
-  border-width: 0 clamp(25px, 3.5vw, 40px) clamp(43px, 6vw, 69px) clamp(25px, 3.5vw, 40px);
+  /* Tamaño pequeño por defecto */
+  --w: clamp(25px, 3.5vw, 40px);
+  --h: clamp(43px, 6vw, 69px);
   border-color: transparent transparent rgba(106, 185, 255, 0.4) transparent;
 }
 
 .triangle-orange-small {
-  border-width: 0 clamp(20px, 3vw, 35px) clamp(35px, 5vw, 61px) clamp(20px, 3vw, 35px);
-  border-color: transparent transparent rgba(171, 100, 0, 0.5) transparent;
+  /* Tamaño pequeño por defecto */
+  --w: clamp(20px, 3vw, 35px);
+  --h: clamp(35px, 5vw, 61px);
+  border-color: transparent transparent rgba(158, 108, 0, 0.5) transparent;
 }
 
 .triangle-1 {
-  top: 25%;    /* Distancia desde arriba (0-100%) */
-  left: 8%;    /* Distancia desde la izquierda (0-100%) */
+  top: 10%;    /* Distancia desde arriba (0-100%) */
+  left: -18%;    /* Distancia desde la izquierda */
   animation-delay: 0s;
+  /* Permite ajuste por triángulo */
+  --w: clamp(165px, 20.833vw, 300px);   /* 300px a 1440px */
+  --h: clamp(330px, 41.667vw, 600px);   /* 600px a 1440px */
+  --rotate: -10.01deg; /* rotación en grados */
 }
 
 .triangle-2 {
-  top: 35%;
-  left: 18%;
+  top: 40%;
+  left: 12%;
   animation-delay: 1s;
+  --w: clamp(44px, 5.556vw, 80px);
+  --h: clamp(70px, 8.909vw, 128.27px);
+  --rotate: 4.65deg;
 }
 
 .triangle-3 {
-  top: 20%;
-  right: 25%;
+  top: 48%;
+  left: 24%;
   animation-delay: 2s;
+  --w: clamp(17px, 2.083vw, 30px);
+  --h: clamp(28px, 3.514vw, 50.6px);
+  --rotate: 53.99deg;
 }
 
 .triangle-4 {
-  top: 45%;
-  left: 25%;
+  top: 44%;
+  left: 26%;
   animation-delay: 0.5s;
+  --w: clamp(22px, 2.778vw, 40px);
+  --h: clamp(33px, 4.167vw, 60px);
+  --rotate: -77.18deg;
 }
 
 .triangle-5 {
-  top: 15%;
-  left: 35%;
+  top: 42%;
+  left: 31.5%;
   animation-delay: 1.5s;
+  --w: clamp(11px, 1.389vw, 20px);
+  --h: clamp(17px, 2.083vw, 30px);
+  --rotate: -21.01deg;
 }
 
 .triangle-6 {
-  top: 30%;
+  top: 42%;
   right: 15%;
   animation-delay: 2.5s;
+  --w: clamp(35px, 4.456vw, 64.135px);
+  --h: clamp(70px, 8.909vw, 128.27px);
+  --rotate: 7.67deg;
 }
 
 .hero-container {
@@ -117,7 +149,7 @@
   font-size: clamp(0.9rem, 1.2vw, 1.25rem);
   color: var(--color-text-secondary);
   margin-bottom: clamp(0.75rem, 1.5vh, 1.5rem);
-  font-weight: 300;
+  font-weight: 600;
 }
 
 .hero-title {
@@ -140,7 +172,7 @@
   font-size: clamp(0.9rem, 1.2vw, 1.25rem);
   color: var(--color-text-secondary);
   margin-bottom: 0;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .hero-button-section {
@@ -158,38 +190,47 @@
   position: relative;
   width: 100%;
   max-width: 2000px;
-  height: clamp(180px, 20vh, 250px);
-  padding: 0 1rem;
+  height: auto; /* Permite crecer según contenido */
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  align-items: stretch; /* Estira items para igualar altura por fila */
+  grid-auto-rows: 1fr;  /* Todas las filas mismas alturas dentro del grid */
 }
 
 .testimonial-card {
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1rem;
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: clamp(0.75rem, 1vw, 1rem);
   padding: clamp(0.75rem, 1.2vh, 1rem) clamp(1rem, 1.5vw, 1.5rem);
-  max-width: clamp(300px, 30vw, 450px);
-  width: auto;
+  width: 100%;
+  max-width: none; /* Ocupa toda la columna para evitar saltos de texto */
+  height: 100%;    /* Igualar altura con la fila del grid */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(10px);
 }
 
 .testimonial-left {
-  bottom: 10px;
-  left: -35%;
+  grid-column: 1;
+  bottom: auto;
+  left: auto;
 }
 
 .testimonial-center {
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  grid-column: 2;
+  top: auto;
+  left: auto;
+  transform: none;
 }
 
 .testimonial-right {
-  top: 35%;
-  right: -35%;
+  grid-column: 3;
+  top: auto;
+  right: auto;
 }
 
 .testimonial-avatar-wrapper {
@@ -251,6 +292,9 @@
   gap: 0.4rem;
   font-size: clamp(0.7rem, 0.8vw, 0.8rem);
   color: #666;
+  white-space: nowrap;        /* Evita salto de línea */
+  overflow: hidden;           /* Recorta si excede */
+  text-overflow: ellipsis;    /* Muestra elipsis si es necesario */
 }
 
 .icon-company {
@@ -281,16 +325,23 @@
 .clients-grid {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  justify-content: space-between;
+  flex-wrap: nowrap;              /* Una sola fila */
+  gap: clamp(1rem, 2vw, 2rem);
+  overflow-x: auto;               /* Scroll horizontal si no entran */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;          /* Firefox: oculta scroll */
+}
+.clients-grid::-webkit-scrollbar { /* WebKit: oculta scroll */
+  display: none;
 }
 
 .client-logo-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(50px, 6vh, 70px);
+  width: clamp(100px, 10vw, 150px);
+  height: clamp(60px, 8vw, 110px);
   transition: transform var(--transition-normal);
 }
 
@@ -299,10 +350,10 @@
 }
 
 .client-logo {
-  max-width: clamp(100px, 12vw, 140px);
-  max-height: clamp(40px, 5vh, 60px);
-  width: auto;
-  height: auto;
+  width: 80%;
+  height: 78%;
+  max-width: none;
+  max-height: none;
   opacity: 0.8;
   filter: brightness(0) invert(1);
   transition: opacity var(--transition-fast);
@@ -314,22 +365,12 @@
 }
 
 @media (max-width: 1400px) {
-  .testimonial-left {
-    left: -25%;
-  }
-  
-  .testimonial-right {
-    right: -25%;
-  }
+  /* Con grid no se requieren offsets */
 }
 
 @media (max-width: 1200px) {
-  .testimonial-left {
-    left: -15%;
-  }
-  
-  .testimonial-right {
-    right: -15%;
+  .testimonials-section {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   }
 }
 
@@ -337,19 +378,14 @@
   .hero-section {
     padding-top: 60px;
   }
-
-  .testimonial-left {
-    left: 0;
-    bottom: 5px;
+  .testimonials-section {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: 1fr;
   }
-  
-  .testimonial-center {
-    top: 5px;
-  }
-  
+  .testimonial-left,
+  .testimonial-center,
   .testimonial-right {
-    right: 0;
-    top: 30%;
+    grid-column: auto; /* Deja que el flujo del grid acomode en 2 columnas */
   }
 }
 
@@ -382,43 +418,56 @@
   .testimonials-section {
     position: static;
     height: auto;
-    padding: 0;
+    padding: 0 clamp(1rem, 4vw, 2rem);
     margin-top: 1.5rem;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto; /* Una columna: altura por contenido */
   }
 
   .testimonial-card {
-    position: static !important;
+    position: relative;
     max-width: 100%;
-    transform: none !important;
+    transform: none;
     margin-bottom: 1rem;
   }
 
   .testimonial-left,
   .testimonial-center,
   .testimonial-right {
-    position: static !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    transform: none !important;
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    transform: none;
+    grid-column: 1; /* En móviles, siempre una por fila */
   }
+
+  /* Ajuste de posiciones verticales de triángulos en móvil (menos altura efectiva) */
+  .triangle-1 { top: 6%; }
+  .triangle-2 { top: 28%; }
+  .triangle-3 { top: 34%; }
+  .triangle-4 { top: 31%; }
+  .triangle-5 { top: 29%; }
+  .triangle-6 { top: 29%; }
 
   .clients-section {
     padding: 1.5rem 0;
   }
 
   .clients-grid {
-    gap: 1.5rem;
+    gap: 1rem;
+    justify-content: flex-start; /* en móviles, inicio y scroll */
   }
 
   .client-logo-wrapper {
-    height: 50px;
+    width: clamp(90px, 22vw, 130px);
+    height: clamp(54px, 14vw, 90px);
   }
 
   .client-logo {
-    max-width: 90px;
-    max-height: 45px;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -435,5 +484,26 @@
   .btn-large {
     padding: 0.625rem 1.25rem;
     font-size: 0.875rem;
+  }
+
+  /* Triángulos más pequeños en móviles */
+  .triangle-1 { --w: clamp(120px, 13.889vw, 300px); --h: clamp(240px, 27.778vw, 600px); }
+  .triangle-2 { --w: clamp(30px, 3.333vw, 80px);   --h: clamp(48px, 5.556vw, 128.27px); }
+  .triangle-3 { --w: clamp(12px, 1.25vw, 30px);    --h: clamp(20px, 2.315vw, 50.6px); }
+  .triangle-4 { --w: clamp(16px, 1.667vw, 40px);   --h: clamp(24px, 2.5vw, 60px); }
+  .triangle-5 { --w: clamp(8px, 0.926vw, 20px);    --h: clamp(12px, 1.389vw, 30px); }
+  .triangle-6 { --w: clamp(28px, 3.148vw, 64.135px);--h: clamp(56px, 6.296vw, 128.27px); }
+
+  /* Afinar aún más el top en pantallas muy angostas */
+  .triangle-1 { top: 5%; }
+  .triangle-2 { top: 24%; }
+  .triangle-3 { top: 30%; }
+  .triangle-4 { top: 27%; }
+  .triangle-5 { top: 25%; }
+  .triangle-6 { top: 25%; }
+
+  .client-logo-wrapper {
+    width: clamp(80px, 45vw, 110px);
+    height: clamp(48px, 27vw, 74px);
   }
 }
