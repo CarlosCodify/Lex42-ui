@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-logo-section">
-      <a href="#home" class="footer-logo">
+      <a href="/" class="footer-logo" (click)="navigateToHome($event)">
         <img src="/assets/images/logo.png" alt="Lex 42 Logo" class="logo-img">
       </a>
     </div>
@@ -9,10 +9,10 @@
     <div class="footer-section">
       <h3 class="footer-title">Recursos</h3>
       <ul class="footer-links">
-        <li><a href="#services">Servicios</a></li>
-        <li><a href="#team">Equipo</a></li>
-        <li><a routerLink="/noticias">Noticias</a></li>
-        <li><a href="#la-firma">La firma</a></li>
+        <li><a href="#services" (click)="scrollToSection($event, '#services')">Servicios</a></li>
+        <li><a href="#team" (click)="scrollToSection($event, '#team')">Equipo</a></li>
+        <li><a routerLink="/noticias" (click)="scrollToSection($event, '/noticias')">Noticias</a></li>
+        <li><a href="#la-firma" (click)="scrollToSection($event, '#la-firma')">La firma</a></li>
         <li><a href="mailto:contacto@lex42.co">Contáctanos</a></li>
       </ul>
     </div>

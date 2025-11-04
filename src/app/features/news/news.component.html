@@ -14,7 +14,7 @@
   <div class="container hero-container">
     <div class="hero-titles-section">
       <h1 class="hero-title">
-        Noticias y recursos legales que <span class="text-blue">sí entiendes.</span>
+        Noticias y <span class="text-blue">recursos legales</span> que sí entiendes.
       </h1>
       <p class="hero-description">
         Entérate de lo que está pasando y cómo impacta a tu empresa. Boletines, análisis y consejos legales claros para empresarios como tú.
@@ -34,7 +34,9 @@
   <section class="news-section">
     <div class="container">
       <div class="news-header">
-        <h2 class="news-title">Recursos legales para tu empresa</h2>
+        <h2 class="news-title">
+          <span class="title-highlight">Recursos legales</span> para tu empresa
+        </h2>
         <p class="news-subtitle">
           Accede a boletines, artículos y consejos prácticos creados por nuestros abogados para ayudarte a tomar decisiones informadas y proteger tu negocio.
         </p>
@@ -56,26 +58,80 @@
           >
         </div>
 
-        <div class="filters">
-          <select 
-            class="filter-select" 
-            [value]="selectedContentType()"
-            (change)="onContentTypeChange($any($event.target).value)"
-          >
-            @for (option of contentTypeOptions; track option.value) {
-              <option [value]="option.value">{{ option.label }}</option>
+        <div class="filters-container">
+          <div class="filter-group" [class.dropdown-open]="isContentTypeDropdownOpen()">
+            <div class="custom-dropdown" (click)="toggleContentTypeDropdown()">
+              <span class="dropdown-label">Tipo de contenido</span>
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="dropdown-arrow">
+                <path d="M1 1L6 6L11 1" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            @if (isContentTypeDropdownOpen()) {
+              <div class="dropdown-menu" (click)="$event.stopPropagation()">
+                @for (option of contentTypeOptions; track option.value) {
+                  <label class="dropdown-option">
+                    <input 
+                      type="checkbox" 
+                      [checked]="isContentTypeSelected(option.value)"
+                      (change)="toggleContentTypeFromString(option.value)"
+                    >
+                    <span>{{ option.label }}</span>
+                  </label>
+                }
+              </div>
             }
-          </select>
+            
+            @if (selectedContentTypes().length > 0) {
+              <div class="selected-filters">
+                @for (type of selectedContentTypes(); track type) {
+                  <span class="filter-chip">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="chip-close" (click)="removeContentType(type); $event.stopPropagation()">
+                      <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {{ getContentTypeLabel(type) }}
+                  </span>
+                }
+              </div>
+            }
+          </div>
 
-          <select 
-            class="filter-select" 
-            [value]="selectedCategory()"
-            (change)="onCategoryChange($any($event.target).value)"
-          >
-            @for (option of categoryOptions; track option.value) {
-              <option [value]="option.value">{{ option.label }}</option>
+          <div class="filter-group" [class.dropdown-open]="isCategoryDropdownOpen()">
+            <div class="custom-dropdown" (click)="toggleCategoryDropdown()">
+              <span class="dropdown-label">Categoría</span>
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="dropdown-arrow">
+                <path d="M1 1L6 6L11 1" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            
+            @if (isCategoryDropdownOpen()) {
+              <div class="dropdown-menu" (click)="$event.stopPropagation()">
+                @for (option of categoryOptions; track option.value) {
+                  <label class="dropdown-option">
+                    <input 
+                      type="checkbox" 
+                      [checked]="isCategorySelected(option.value)"
+                      (change)="toggleCategoryFromString(option.value)"
+                    >
+                    <span>{{ option.label }}</span>
+                  </label>
+                }
+              </div>
             }
-          </select>
+            
+            @if (selectedCategories().length > 0) {
+              <div class="selected-filters">
+                @for (category of selectedCategories(); track category) {
+                  <span class="filter-chip">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="chip-close" (click)="removeCategory(category); $event.stopPropagation()">
+                      <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {{ getCategoryLabel(category) }}
+                  </span>
+                }
+              </div>
+            }
+          </div>
         </div>
       </div>
 
@@ -86,29 +142,24 @@
             <h3 class="article-title">{{ article.title }}</h3>
             
             <div class="article-tags">
-              <span 
-                class="tag" 
-                [style.background-color]="getTagBackgroundColor(article.contentType)"
-                [style.color]="getTagTextColor(article.contentType)"
-              >
-                {{ getContentTypeLabel(article.contentType) }}
-              </span>
-              @if (article.contentType === 'boletin' || article.contentType === 'novedad-legal') {
+              @for (type of article.contentType; track type) {
                 <span 
                   class="tag" 
-                  [style.background-color]="getTagBackgroundColor('novedad')"
-                  [style.color]="getTagTextColor('novedad')"
+                  [style.background-color]="getTagBackgroundColor(type)"
+                  [style.color]="getTagTextColor(type)"
                 >
-                  Novedad
+                  {{ getContentTypeLabel(type) }}
                 </span>
               }
-              <span 
-                class="tag" 
-                [style.background-color]="getTagBackgroundColor(article.category)"
-                [style.color]="getTagTextColor(article.category)"
-              >
-                {{ getCategoryLabel(article.category) }}
-              </span>
+              @for (category of article.category; track category) {
+                <span 
+                  class="tag" 
+                  [style.background-color]="getTagBackgroundColor(category)"
+                  [style.color]="getTagTextColor(category)"
+                >
+                  {{ getCategoryLabel(category) }}
+                </span>
+              }
             </div>
 
             <p class="article-excerpt">{{ article.excerpt }}</p>
@@ -170,22 +221,26 @@
 <!-- Article Detail Section -->
 @if (selectedArticle()) {
   <section class="article-detail-section">
-    <div class="container">
-      <button class="back-button" (click)="goBack()">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Atrás
-      </button>
+    <div class="article-detail-container">
+      <div class="article-detail-header">
+        <button class="back-button" (click)="goBack()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Atrás
+        </button>
 
-      <nav class="breadcrumb">
-        <a routerLink="/noticias">Noticias</a>
-        <span class="breadcrumb-separator">></span>
-        <span>{{ selectedArticle()!.title }}</span>
-      </nav>
+        <nav class="breadcrumb">
+          <a routerLink="/noticias">Noticias</a>
+          <span class="breadcrumb-separator">></span>
+          <span>{{ selectedArticle()!.title }}</span>
+        </nav>
+      </div>
 
       <article class="article-detail">
         <h1 class="article-detail-title">{{ selectedArticle()!.title }}</h1>
+        
+        <div class="article-divider-full"></div>
 
         <div class="article-detail-metadata">
           <div class="author-info">
@@ -197,46 +252,44 @@
               }
             </div>
             <div class="author-details">
-              <span class="metadata-label">Nombre</span>
               <span class="metadata-value">{{ selectedArticle()!.author.name }}</span>
+              <span class="metadata-label">Nombre</span>
             </div>
           </div>
 
           <div class="metadata-group">
-            <span class="metadata-label">Especialidad</span>
             <span class="metadata-value">{{ selectedArticle()!.author.specialty }}</span>
+            <span class="metadata-label">Especialidad</span>
           </div>
 
           <div class="metadata-group">
-            <span class="metadata-label">Fecha</span>
             <span class="metadata-value">{{ formatDate(selectedArticle()!.publishDate) }}</span>
+            <span class="metadata-label">Fecha</span>
           </div>
 
           <div class="metadata-group">
+            <span class="metadata-value">{{ getContentTypesLabel(selectedArticle()!.contentType) }}</span>
             <span class="metadata-label">Tipo de Contenido</span>
-            <span class="metadata-value">{{ getContentTypeLabel(selectedArticle()!.contentType) }}</span>
           </div>
 
           <div class="metadata-group">
+            <span class="metadata-value">{{ getCategoriesLabel(selectedArticle()!.category) }}</span>
             <span class="metadata-label">Categoría</span>
-            <span class="metadata-value">{{ getCategoryLabel(selectedArticle()!.category) }}</span>
           </div>
         </div>
 
-        <div class="article-detail-reading-time">
-          Tiempo Lectura {{ selectedArticle()!.readingTime }} min
-        </div>
+        <div class="article-divider-partial"></div>
 
-        <div class="article-detail-tags">
-          @for (tag of selectedArticle()!.tags; track tag) {
-            <span 
-              class="detail-tag" 
-              [style.background-color]="getTagBackgroundColor(selectedArticle()!.contentType)"
-              [style.color]="getTagTextColor(selectedArticle()!.contentType)"
-            >
-              {{ tag }}
-            </span>
-          }
+        <div class="article-reading-time-tags">
+          <span class="reading-time-text">Tiempo de lectura: {{ selectedArticle()!.readingTime }} min</span>
+          <span class="tags-separator">|</span>
+          <div class="article-detail-tags">
+            @for (tag of selectedArticle()!.tags; track tag) {
+              <span class="detail-tag">
+                {{ tag }}
+              </span>
+            }
+          </div>
         </div>
 
         <div class="article-detail-content">
