@@ -36,6 +36,13 @@ export class FooterComponent {
       return;
     }
 
+    if (link === '/contacto' || link === '#contacto' || link === 'mailto:contacto@lex42.co') {
+      this.router.navigate(['/contacto']).then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      return;
+    }
+
     if (this.router.url !== '/') {
       this.router.navigate(['/']).then(() => {
         setTimeout(() => {

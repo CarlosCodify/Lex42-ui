@@ -42,6 +42,14 @@ export class HeaderComponent {
       return;
     }
     
+    if (link === '#contacto' || link === '/contacto') {
+      this.router.navigate(['/contacto']).then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      this.isMenuOpen.set(false);
+      return;
+    }
+    
     if (this.router.url !== '/') {
       this.router.navigate(['/']).then(() => {
         setTimeout(() => {

@@ -20,5 +20,9 @@ export const routes: Routes = [
   {
     path: 'la-firma',
     loadComponent: () => import('./features/la-firma/la-firma.component').then(m => m.LaFirmaComponent)
+  },
+  {
+    path: 'contacto',
+    loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent)
   }
 ];

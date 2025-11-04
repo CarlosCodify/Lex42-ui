@@ -1,0 +1,230 @@
+<app-header></app-header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="geometric-shapes">
+    <div class="triangle triangle-blue triangle-1"></div>
+    <div class="triangle triangle-orange triangle-2"></div>
+    <div class="triangle triangle-blue-small triangle-3"></div>
+    <div class="triangle triangle-orange-small triangle-4"></div>
+    <div class="triangle triangle-blue-small triangle-5"></div>
+    <div class="triangle triangle-orange triangle-6"></div>
+  </div>
+  
+  <div class="container hero-container">
+    <div class="hero-content-wrapper">
+      <div class="hero-titles-section">
+        <h1 class="hero-title">
+          <span class="text-conversemos">Conversemos</span> sobre lo que tu empresa necesita
+        </h1>
+        <p class="hero-description">
+          En Lex 42, cada consulta la atiende directamente un abogado de nuestro equipo. Cuéntanos tu caso y te responderemos con soluciones claras y concretas.
+        </p>
+      </div>
+
+      <div class="hero-button-section">
+        <a href="#contact-form" class="btn btn-primary btn-large">
+          Agenda una consulta
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="contact-form-section" id="contact-form">
+  <div class="container">
+    <div class="contact-form-header">
+      <h2 class="contact-form-title">
+        Envíanos tu <span class="title-orange">consulta</span>
+      </h2>
+      <p class="contact-form-description">
+        Déjanos tus datos y cuéntanos brevemente tu caso. Un abogado de Lex 42 te responderá en menos de 24 horas hábiles.
+      </p>
+    </div>
+
+    <div class="contact-form-content">
+      <!-- Left Column: Contact Info -->
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <label class="contact-info-label">Email</label>
+          <a href="mailto:contacto@lex42.com" class="contact-info-value">contacto@lex42.com</a>
+        </div>
+        
+        <div class="contact-info-item">
+          <label class="contact-info-label">Teléfono</label>
+          <a href="tel:+573150612633" class="contact-info-value">+57 315 0612633</a>
+        </div>
+
+        <div class="contact-social-icons">
+          <a href="https://wa.me/573150612633" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp">
+            <img src="/assets/images/utils/WhatsappLogo.svg" alt="WhatsApp" />
+          </a>
+          <a href="https://www.instagram.com/lex42.co/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+            <img src="/assets/images/utils/instagram-logo.svg" alt="Instagram" />
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+            <img src="/assets/images/utils/linkedin-logo.svg" alt="LinkedIn" />
+          </a>
+          <a href="mailto:contacto@lex42.com" class="social-icon" aria-label="Email">
+            <img src="/assets/images/utils/mail-simple-closed.svg" alt="Email" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Form -->
+      <div class="contact-form-wrapper">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombreCompleto" class="form-label">
+                Nombre completo <span class="required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="nombreCompleto" 
+                formControlName="nombreCompleto"
+                class="form-input"
+                placeholder="Nombre completo"
+                [class.error]="contactForm.get('nombreCompleto')?.invalid && contactForm.get('nombreCompleto')?.touched"
+              >
+              @if (contactForm.get('nombreCompleto')?.invalid && contactForm.get('nombreCompleto')?.touched) {
+                <span class="error-message">Este campo es requerido</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="correo" class="form-label">
+                Correo electrónico <span class="required">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="correo" 
+                formControlName="correo"
+                class="form-input"
+                placeholder="Correo electrónico"
+                [class.error]="contactForm.get('correo')?.invalid && contactForm.get('correo')?.touched"
+              >
+              @if (contactForm.get('correo')?.invalid && contactForm.get('correo')?.touched) {
+                <span class="error-message">
+                  {{ contactForm.get('correo')?.errors?.['required'] ? 'Este campo es requerido' : 'Correo electrónico inválido' }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono" class="form-label">
+                Teléfono <span class="required">*</span>
+              </label>
+              <input 
+                type="tel" 
+                id="telefono" 
+                formControlName="telefono"
+                class="form-input"
+                placeholder="Teléfono"
+                [class.error]="contactForm.get('telefono')?.invalid && contactForm.get('telefono')?.touched"
+              >
+              @if (contactForm.get('telefono')?.invalid && contactForm.get('telefono')?.touched) {
+                <span class="error-message">Este campo es requerido</span>
+              }
+            </div>
+
+            <div class="form-group">
+              <label for="ciudad" class="form-label">
+                Ciudad / Departamento / País
+              </label>
+              <input 
+                type="text" 
+                id="ciudad" 
+                formControlName="ciudad"
+                class="form-input"
+                placeholder="Ciudad / Departamento / País"
+              >
+            </div>
+          </div>
+
+          <div class="form-group form-group-full">
+            <label for="consulta" class="form-label">
+              ¿En qué podemos ayudarte? <span class="required">*</span>
+            </label>
+            <textarea 
+              id="consulta" 
+              formControlName="consulta"
+              class="form-textarea"
+              placeholder="Déjanos tu duda"
+              rows="5"
+              [class.error]="contactForm.get('consulta')?.invalid && contactForm.get('consulta')?.touched"
+            ></textarea>
+            @if (contactForm.get('consulta')?.invalid && contactForm.get('consulta')?.touched) {
+              <span class="error-message">Este campo es requerido</span>
+            }
+          </div>
+
+          <div class="form-footer">
+            <p class="form-note">
+              Respondemos en menos de 24 horas hábiles.
+            </p>
+
+            <button type="submit" class="btn btn-submit" [disabled]="contactForm.invalid">
+              Enviar consulta
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<app-cta-section></app-cta-section>
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="container">
+    <div class="features-header">
+      <h2 class="features-title">
+        Tu aliado legal de <span class="title-highlight">confianza</span>
+      </h2>
+      <p class="features-description">
+        En Lex 42 combinamos experiencia, rapidez y lenguaje claro para que siempre tengas la mejor respuesta jurídica.
+      </p>
+    </div>
+
+    <div class="features-cards-grid">
+      <div class="feature-card">
+        <div class="feature-card-illustration">
+          <img src="/assets/images/utils/listening-to-feedback.svg" alt="Respuesta rápida y personalizada" class="feature-illustration">
+        </div>
+        <h3 class="feature-card-title">Respuesta rápida y personalizada</h3>
+        <p class="feature-card-description">
+          Sin esperas innecesarias, estamos para ti desde el principio y fin.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-illustration">
+          <img src="/assets/images/utils/motivate-someone (1).svg" alt="Lenguaje claro" class="feature-illustration">
+        </div>
+        <h3 class="feature-card-title">Lenguaje claro</h3>
+        <p class="feature-card-description">
+          Te explicamos sin términos legales complicados.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-illustration">
+          <img src="/assets/images/utils/enter-password.svg" alt="Confidencialidad garantizada" class="feature-illustration">
+        </div>
+        <h3 class="feature-card-title">Confidencialidad garantizada</h3>
+        <p class="feature-card-description">
+          Tu información está siempre protegida, sin preocupaciones.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
+
