@@ -29,6 +29,13 @@ export class FooterComponent {
       return;
     }
 
+    if (link === '/la-firma' || link === '#la-firma') {
+      this.router.navigate(['/la-firma']).then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      return;
+    }
+
     if (this.router.url !== '/') {
       this.router.navigate(['/']).then(() => {
         setTimeout(() => {

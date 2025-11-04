@@ -1,0 +1,707 @@
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 30vh;
+  min-height: 300px;
+  max-height: 30vh;
+  background: radial-gradient(46.74% 87.46% at 50% 85.07%, #0178DF 0%, #01274D 100%);
+  padding-top: 70px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.geometric-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  opacity: 0.6;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+}
+
+.triangle-blue {
+  border-width: 0 clamp(30px, 4vw, 60px) clamp(50px, 7vw, 100px) clamp(30px, 4vw, 60px);
+  border-color: transparent transparent rgba(106, 185, 255, 0.5) transparent;
+}
+
+.triangle-orange {
+  border-width: 0 clamp(25px, 3.5vw, 50px) clamp(40px, 6vw, 80px) clamp(25px, 3.5vw, 50px);
+  border-color: transparent transparent rgba(158, 108, 0, 0.6) transparent;
+}
+
+.triangle-blue-small {
+  border-width: 0 clamp(15px, 2vw, 25px) clamp(25px, 3.5vw, 40px) clamp(15px, 2vw, 25px);
+  border-color: transparent transparent rgba(106, 185, 255, 0.4) transparent;
+}
+
+.triangle-orange-small {
+  border-width: 0 clamp(12px, 1.5vw, 20px) clamp(18px, 2.5vw, 30px) clamp(12px, 1.5vw, 20px);
+  border-color: transparent transparent rgba(158, 108, 0, 0.5) transparent;
+}
+
+.triangle-1 {
+  top: 25%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.triangle-2 {
+  top: 35%;
+  left: 18%;
+  animation-delay: 1s;
+}
+
+.triangle-3 {
+  top: 20%;
+  right: 25%;
+  animation-delay: 2s;
+}
+
+.triangle-4 {
+  top: 45%;
+  left: 25%;
+  animation-delay: 0.5s;
+}
+
+.triangle-5 {
+  top: 15%;
+  left: 35%;
+  animation-delay: 1.5s;
+}
+
+.triangle-6 {
+  top: 30%;
+  right: 15%;
+  animation-delay: 2.5s;
+}
+
+.hero-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem 0 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-titles-section {
+  text-align: left;
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.hero-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: clamp(0.5rem, 1vh, 1rem);
+  color: white;
+}
+
+.hero-title .text-blue {
+  color: #6AB9FF;
+}
+
+.hero-description {
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  color: white;
+  margin-bottom: 0;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.hero-button-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: #0178DF;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0165c4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(1, 120, 223, 0.3);
+}
+
+.btn-large {
+  padding: clamp(0.75rem, 1.2vh, 1rem) clamp(1.5rem, 3vw, 3rem);
+  font-size: clamp(0.9rem, 1.1vw, 1.125rem);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+/* Stepper Section */
+.stepper-section {
+  background: white;
+  padding: 4rem 0 6rem 0;
+}
+
+.stepper-header {
+  margin-bottom: 3rem;
+}
+
+.stepper-title {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: rgba(17, 50, 100, 1);
+  margin: 0;
+  text-align: left;
+  line-height: 1.2;
+  padding-left: 2rem;
+}
+
+.stepper-title .title-highlight {
+  color: #9E6C00;
+}
+
+.stepper-container {
+  background: white;
+  border: 1px solid rgba(0, 117, 209, 1);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+/* Progress Bar */
+.progress-bar-wrapper {
+  width: 100%;
+  height: 4px;
+  background: rgba(32, 0, 54, 0.0941);
+  border-radius: 2px;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: rgba(0, 117, 209, 1);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* Steps Wrapper */
+.steps-wrapper {
+  display: flex;
+  align-items: stretch; /* Asegurar que todos los items tengan la misma altura */
+  justify-content: space-between;
+  position: relative;
+  padding-top: 3rem;
+  margin-top: 1rem;
+  gap: 0;
+}
+
+/* Step Item */
+.step-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  justify-content: flex-start; /* Alinear contenido arriba */
+  min-height: 100%; /* Asegurar altura mínima */
+}
+
+/* Step Content */
+.step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0;
+}
+
+/* Step Connector (between steps) - Entre las imágenes, centrado */
+.step-connector {
+  position: absolute;
+  top: 80px;
+  left: calc(50% + 80px);
+  width: calc(100% - 160px);
+  height: 2px;
+  background: rgba(32, 0, 54, 0.0941);
+  z-index: 1;
+  transition: background 0.5s ease;
+  pointer-events: none;
+}
+
+/* Ocultar el conector del último paso */
+.step-item:last-child .step-connector {
+  display: none;
+}
+
+.step-connector.active {
+  background: rgba(0, 117, 209, 1);
+}
+
+/* Espaciador antes del checkmark */
+.checkmark-spacer {
+  flex: 1;
+  min-height: 3rem; /* Espacio mínimo antes del checkmark */
+}
+
+/* Step Checkmark - Dentro de cada step-item, debajo del contenido */
+.step-item .step-checkmark {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; /* Redondo */
+  background: rgba(32, 0, 54, 0.0941);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  flex-shrink: 0;
+  margin-top: auto; /* Empujar hacia abajo para alineación horizontal */
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2; /* Asegurar que esté por encima de los conectores */
+}
+
+.step-item .step-checkmark.active {
+  background: rgba(171, 101, 1, 1);
+}
+
+.step-item .step-checkmark svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: block !important; /* Asegurar que el SVG se muestre siempre */
+}
+
+.step-item .step-checkmark.active svg {
+  opacity: 1;
+  display: block !important; /* Asegurar que el SVG se muestre cuando está activo */
+}
+
+/* Step Illustration */
+.step-illustration {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.step-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Step Info */
+.step-info {
+  text-align: center;
+  max-width: 300px;
+}
+
+.step-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(17, 50, 100, 1);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+}
+
+.step-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(101, 99, 109, 1);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .hero-titles-section {
+    flex: 1;
+    max-width: 100%;
+  }
+  
+  .hero-button-section {
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+  
+  .hero-section {
+    height: 25vh;
+    min-height: 200px;
+  }
+
+  .steps-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .step-item {
+    width: 100%;
+  }
+
+  /* En mobile: ocultar conectores horizontales */
+  .step-connector {
+    position: static;
+    width: 2px;
+    height: 2rem;
+    margin: 1rem auto;
+    transform: none;
+    background: rgba(32, 0, 54, 0.0941);
+  }
+
+  .step-connector.active {
+    background: rgba(0, 117, 209, 1);
+  }
+
+  /* En mobile: los checkmarks ya están en cada step-item, solo ajustar espaciado */
+  .step-item .step-checkmark {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .stepper-container {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Values Section */
+.values-section {
+  background: white;
+  padding: 6rem 0;
+}
+
+.values-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Left Column: Text */
+.values-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.values-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: rgba(17, 50, 100, 1);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.title-orange {
+  color: rgba(171, 101, 1, 1);
+}
+
+.values-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(74, 74, 74, 1);
+  margin: 0;
+}
+
+/* Right Column: Value Cards */
+.values-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.value-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(179, 212, 255, 1);
+  border-radius: 8px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.value-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.value-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgba(17, 50, 100, 1);
+  margin: 0;
+}
+
+/* Responsive for Values Section */
+@media (max-width: 1024px) {
+  .values-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .values-cards {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .values-section {
+    padding: 4rem 0;
+  }
+
+  .values-content {
+    gap: 2.5rem;
+  }
+
+  .value-card {
+    padding: 1.25rem;
+  }
+}
+
+/* What Makes Us Different Section */
+.what-different-section {
+  background: white;
+  padding: 4rem 0;
+}
+
+.what-different-section .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.what-different-header {
+  text-align: left;
+  margin-bottom: 3rem;
+  max-width: 900px;
+}
+
+.what-different-title {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  color: rgba(17, 50, 100, 1);
+}
+
+.what-different-title .title-highlight {
+  color: rgba(171, 101, 1, 1);
+}
+
+.different-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.different-card {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 125, 254, 0.537);
+  cursor: default;
+}
+
+.different-card:hover {
+  transform: translateY(-8px);
+  background: rgba(217, 237, 254, 0.1491);
+  border: 1px solid rgba(0, 125, 254, 0.537);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.different-card-illustration {
+  width: 164px;
+  height: 164px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.different-illustration {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.different-card-title {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: rgba(17, 50, 100, 1);
+}
+
+.different-card-description {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.6;
+  color: rgba(101, 99, 109, 1);
+  margin: 0;
+}
+
+/* Responsive for What Makes Us Different Section */
+@media (max-width: 1024px) {
+  .different-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .what-different-section {
+    padding: 3rem 0;
+  }
+
+  .what-different-section .container {
+    padding: 0 1rem;
+  }
+
+  .different-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .different-card-illustration {
+    width: 140px;
+    height: 140px;
+  }
+
+  .what-different-section {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 30vh;
+    min-height: 250px;
+    padding-top: 80px;
+  }
+
+  .stepper-section {
+    padding: 3rem 0 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .stepper-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .step-illustration {
+    width: 120px;
+    height: 120px;
+  }
+
+  .step-title {
+    font-size: 1.1rem;
+  }
+
+  .step-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .stepper-title {
+    font-size: 1.75rem;
+  }
+
+  .step-illustration {
+    width: 100px;
+    height: 100px;
+  }
+}
+

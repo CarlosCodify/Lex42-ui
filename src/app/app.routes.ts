@@ -16,5 +16,9 @@ export const routes: Routes = [
   {
     path: 'noticias',
     loadComponent: () => import('./features/news/news.component').then(m => m.NewsComponent)
+  },
+  {
+    path: 'la-firma',
+    loadComponent: () => import('./features/la-firma/la-firma.component').then(m => m.LaFirmaComponent)
   }
 ];

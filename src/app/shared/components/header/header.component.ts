@@ -33,6 +33,15 @@ export class HeaderComponent {
       return;
     }
     
+    if (link === '#la-firma' || link === '/la-firma') {
+      this.router.navigate(['/la-firma']).then(() => {
+        // Hacer scroll al inicio de la página después de navegar
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      this.isMenuOpen.set(false);
+      return;
+    }
+    
     if (this.router.url !== '/') {
       this.router.navigate(['/']).then(() => {
         setTimeout(() => {

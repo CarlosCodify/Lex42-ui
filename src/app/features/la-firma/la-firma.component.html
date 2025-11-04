@@ -1,0 +1,193 @@
+<app-header></app-header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="geometric-shapes">
+    <div class="triangle triangle-blue triangle-1"></div>
+    <div class="triangle triangle-orange triangle-2"></div>
+    <div class="triangle triangle-blue-small triangle-3"></div>
+    <div class="triangle triangle-orange-small triangle-4"></div>
+    <div class="triangle triangle-blue-small triangle-5"></div>
+    <div class="triangle triangle-orange triangle-6"></div>
+  </div>
+  
+  <div class="container hero-container">
+    <div class="hero-titles-section">
+      <h1 class="hero-title">
+        La Firma detrás de <span class="text-blue">Lex 42</span>
+      </h1>
+      <p class="hero-description">
+        Somos un equipo de abogados que cree en la justicia cercana, eficiente y transformadora. Combinamos experiencia legal con una mirada moderna del derecho para acompañarte en cada paso.
+      </p>
+    </div>
+
+    <div class="hero-button-section">
+      <a href="mailto:contacto@lex42.co?subject=Solicitud de Consulta" class="btn btn-primary btn-large">
+        Agenda una consulta
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stepper Section -->
+<section class="stepper-section" #stepperSection>
+  <div class="container">
+    <div class="stepper-header">
+      <h2 class="stepper-title">
+        ¿Cómo nace <span class="title-highlight">Lex 42?</span>
+      </h2>
+    </div>
+
+    <div class="stepper-container" #stepperContainer>
+      <!-- Progress Bar -->
+      <div class="progress-bar-wrapper">
+        <div class="progress-bar" [style.width.%]="getProgressPercentage()"></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="steps-wrapper">
+        @for (step of steps(); track step.id) {
+          <div class="step-item" [attr.data-step-id]="step.id">
+            <!-- Step Content -->
+            <div class="step-content">
+              <!-- Step Illustration -->
+              <div class="step-illustration">
+                <img [src]="step.svgPath" [alt]="step.title" />
+              </div>
+
+              <!-- Step Info -->
+              <div class="step-info">
+                <h3 class="step-title">{{ step.title }}</h3>
+                <p class="step-description">{{ step.description }}</p>
+              </div>
+            </div>
+
+            <!-- Espaciador antes del checkmark -->
+            <div class="checkmark-spacer"></div>
+
+            <!-- Checkmark debajo de cada paso -->
+            <div class="step-checkmark" [class.active]="step.isActive">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <!-- Horizontal Connector Line (between steps) -->
+            @if (step.id < steps().length) {
+              <div class="step-connector" [class.active]="step.isActive"></div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lo que nos mueve Section -->
+<section class="values-section">
+  <div class="container">
+    <div class="values-content">
+      <!-- Left Column: Text -->
+      <div class="values-text">
+        <h2 class="values-title">
+          Lo que nos <span class="title-orange">mueve</span>
+        </h2>
+        <p class="values-description">
+          En Lex 42 trabajamos para democratizar el acceso a la justicia, facilitar procesos legales y construir relaciones de confianza con nuestros clientes.
+        </p>
+        <p class="values-description">
+          Más que resolver problemas, buscamos anticiparlos y prevenirlos a través de asesoría clara, honesta y personalizada.
+        </p>
+      </div>
+
+      <!-- Right Column: Value Cards -->
+      <div class="values-cards">
+        <div class="value-card">
+          <div class="value-icon">
+            <img src="/assets/images/utils/hearth.svg" alt="Cercanía" />
+          </div>
+          <h3 class="value-card-title">Cercanía</h3>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <img src="/assets/images/utils/medal.svg" alt="Transparencia" />
+          </div>
+          <h3 class="value-card-title">Transparencia</h3>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <img src="/assets/images/utils/light.svg" alt="Innovación digital" />
+          </div>
+          <h3 class="value-card-title">Innovación digital</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Component -->
+<app-team></app-team>
+
+<!-- CTA Section -->
+<app-cta-section></app-cta-section>
+
+<!-- What Makes Us Different Section -->
+<section class="what-different-section">
+  <div class="container">
+    <div class="what-different-header">
+      <h2 class="what-different-title">
+        ¿Qué nos <span class="title-highlight">diferencia</span>?
+      </h2>
+    </div>
+
+    <div class="different-cards-grid">
+      <div class="different-card">
+        <div class="different-card-illustration">
+          <img src="/assets/images/signature/teamwork.svg" alt="Hablamos claro" class="different-illustration">
+        </div>
+        <h3 class="different-card-title">Hablamos claro</h3>
+        <p class="different-card-description">
+          Evitamos el lenguaje complejo para que comprendas tus derechos.
+        </p>
+      </div>
+
+      <div class="different-card">
+        <div class="different-card-illustration">
+          <img src="/assets/images/signature/dna.svg" alt="Te acompañamos" class="different-illustration">
+        </div>
+        <h3 class="different-card-title">Te acompañamos</h3>
+        <p class="different-card-description">
+          De forma cercana y humana.
+        </p>
+      </div>
+
+      <div class="different-card">
+        <div class="different-card-illustration">
+          <img src="/assets/images/signature/smart-phone.svg" alt="Usamos tecnología" class="different-illustration">
+        </div>
+        <h3 class="different-card-title">Usamos tecnología</h3>
+        <p class="different-card-description">
+          Para hacer el derecho más eficiente y accesible.
+        </p>
+      </div>
+
+      <div class="different-card">
+        <div class="different-card-illustration">
+          <img src="/assets/images/signature/social-media-discussion.svg" alt="Nos importa" class="different-illustration">
+        </div>
+        <h3 class="different-card-title">Nos importa</h3>
+        <p class="different-card-description">
+          El impacto social de cada caso.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stories Component -->
+<app-stories></app-stories>
+
+<app-footer></app-footer>
+
