@@ -23,9 +23,9 @@ export class HomeComponent {
   protected readonly testimonials = signal<Testimonial[]>([
     {
       id: 1,
-      avatar: '/assets/images/testimonials/avatar-2.png',
-      quote: 'Tu tranquilidad jurídica es nuestra prioridad',
-      author: 'Lex 42',
+      avatar: '/assets/images/clients/quimisa.png',
+      quote: 'Son un aliado muy importante para nuestra operación',
+      author: 'Quiminsa',
       company: '',
       rating: 5,
       position: {},
@@ -33,9 +33,9 @@ export class HomeComponent {
     },
     {
       id: 2,
-      avatar: '/assets/images/testimonials/avatar-1.svg',
+      avatar: '/assets/images/clients/cnid.png',
       quote: 'Con Lex 42 tomamos decisiones con tranquilidad y claridad. Siempre entienden lo que necesitamos.',
-      author: 'Yolver Gutierrez',
+      author: 'Felipe Palaez',
       company: '',
       rating: 5,
       position: {},
@@ -43,9 +43,9 @@ export class HomeComponent {
     },
     {
       id: 3,
-      avatar: '/assets/images/testimonials/avatar-3.png',
+      avatar: '/assets/images/clients/ingeal.png',
       quote: 'Lex 42 prioriza nuestro negocio y siempre responde con soluciones claras y ágiles.',
-      author: 'Galvanizados de Occidente',
+      author: 'Nicolas Riascos',
       company: '',
       rating: 5,
       position: {},
