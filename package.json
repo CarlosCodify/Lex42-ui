@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:Lex42-ui": "node dist/Lex42-ui/server/server.mjs"
+    "serve:ssr:Lex42-ui": "node dist/Lex42-ui/server/server.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "optimize:svgs": "node scripts/optimize-svgs.mjs",
+    "optimize:all": "npm run optimize:images && npm run optimize:svgs"
   },
   "prettier": {
     "printWidth": 100,
@@ -48,6 +51,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "sharp": "^0.34.5",
+    "svgo": "^4.0.0",
     "typescript": "~5.9.2"
   }
 }
