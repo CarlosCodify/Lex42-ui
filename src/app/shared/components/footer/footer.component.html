@@ -2,7 +2,10 @@
   <div class="footer-container">
     <div class="footer-logo-section">
       <a href="/" class="footer-logo" (click)="navigateToHome($event)">
-        <img src="/assets/images/logo.png" alt="Lex 42 Logo" class="logo-img">
+        <picture>
+          <source type="image/webp" srcset="/assets/images/logo.webp">
+          <img src="/assets/images/logo.png" alt="Lex 42 Logo" class="logo-img" width="120" height="40" loading="lazy">
+        </picture>
       </a>
     </div>
 
