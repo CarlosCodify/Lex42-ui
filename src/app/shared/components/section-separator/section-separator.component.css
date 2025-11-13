@@ -1,7 +1,7 @@
 .section-separator {
   position: relative;
   min-height: 50vh;
-  background: radial-gradient(46.74% 87.46% at 50% 85.07%, #0178DF 0%, #01274D 100%);
+  background: rgba(0, 49, 107, 1);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -12,14 +12,14 @@
 .decorative-lines {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 5%;
+  right: 5%;
   bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 .lines-svg {
@@ -48,60 +48,99 @@
   border-style: solid;
   opacity: 0.6;
   animation: float 8s ease-in-out infinite;
+  animation-fill-mode: both;
+  transform: translateY(0) rotate(var(--rotate, 0deg));
+  will-change: transform;
+  backface-visibility: hidden;
+  /* Variables por triángulo para tamaño y rotación */
+  --w: clamp(60px, 8vw, 100px);   /* semi-ancho por defecto */
+  --h: clamp(104px, 14vw, 173px); /* altura por defecto */
+  --rotate: 0deg;                 /* rotación base por defecto */
+  border-width: 0 var(--w) var(--h) var(--w);
 }
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(var(--rotate, 0deg));
   }
   50% {
-    transform: translateY(-20px) rotate(3deg);
+    transform: translateY(-20px) rotate(calc(var(--rotate, 0deg) + 3deg));
   }
 }
 
 .triangle-blue {
-  border-width: 0 clamp(60px, 8vw, 100px) clamp(104px, 14vw, 173px) clamp(60px, 8vw, 100px);
   border-color: transparent transparent rgba(106, 185, 255, 0.5) transparent;
 }
 
 .triangle-orange {
-  border-width: 0 clamp(50px, 7vw, 90px) clamp(87px, 12vw, 156px) clamp(50px, 7vw, 90px);
+  /* Tamaño mediano por defecto */
+  --w: clamp(50px, 7vw, 90px);
+  --h: clamp(87px, 12vw, 156px);
   border-color: transparent transparent rgba(158, 108, 0, 0.6) transparent;
 }
 
 .triangle-blue-small {
-  border-width: 0 clamp(25px, 3.5vw, 40px) clamp(43px, 6vw, 69px) clamp(25px, 3.5vw, 40px);
+  /* Tamaño pequeño por defecto */
+  --w: clamp(25px, 3.5vw, 40px);
+  --h: clamp(43px, 6vw, 69px);
   border-color: transparent transparent rgba(106, 185, 255, 0.4) transparent;
 }
 
 .triangle-orange-small {
-  border-width: 0 clamp(20px, 3vw, 35px) clamp(35px, 5vw, 61px) clamp(20px, 3vw, 35px);
+  /* Tamaño pequeño por defecto */
+  --w: clamp(20px, 3vw, 35px);
+  --h: clamp(35px, 5vw, 61px);
   border-color: transparent transparent rgba(158, 108, 0, 0.5) transparent;
 }
 
 .triangle-1 {
   top: 20%;
-  right: -80px;
+  right: -60px;
   animation-delay: 0s;
-  border-width: 0 clamp(120px, 15vw, 180px) clamp(208px, 26vw, 312px) clamp(120px, 15vw, 180px);
+  /* Permite ajuste por triángulo */
+  --w: clamp(120px, 15vw, 150px);
+  --h: clamp(208px, 26vw, 280px);
+  --rotate: 5deg; /* rotación en grados */
 }
 
 .triangle-2 {
-  top: 60%;
-  right: 30%;
+  top: 45%;
+  right: 20%;
   animation-delay: 1.5s;
+  /* Puedes ajustar tamaño y rotación aquí */
+  --w: clamp(50px, 7vw, 55px);
+  --h: clamp(87px, 12vw, 100px);
+  --rotate: -5deg;
 }
 
 .triangle-3 {
-  top: 10%;
-  right: 40%;
+  top: 43%;
+  right: 28%;
   animation-delay: 2s;
+  /* Puedes ajustar tamaño y rotación aquí */
+  --w: clamp(25px, 3.5vw, 20px);
+  --h: clamp(43px, 6vw, 49px);
+  --rotate: 180deg;
 }
 
 .triangle-4 {
-  bottom: 15%;
-  right: 15%;
+  top: 32%;
+  right: 32%;
   animation-delay: 0.8s;
+  /* Puedes ajustar tamaño y rotación aquí */
+  --w: clamp(20px, 3vw, 35px);
+  --h: clamp(35px, 5vw, 61px);
+  --rotate: 100deg;
+}
+
+.triangle-5 {
+  top: 25%;
+  right: 40%;
+  animation-delay: 0.8s;
+  /* Puedes ajustar tamaño y rotación aquí */
+  --w: clamp(20px, 3vw, 20px);
+  --h: clamp(35px, 5vw, 49px);
+  --rotate: -80deg;
 }
 
 .separator-content {
