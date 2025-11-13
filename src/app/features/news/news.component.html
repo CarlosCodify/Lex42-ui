@@ -246,7 +246,16 @@
           <div class="author-info">
             <div class="author-avatar">
               @if (selectedArticle()!.author.photo) {
-                <img [src]="selectedArticle()!.author.photo" [alt]="selectedArticle()!.author.name">
+                <picture>
+                  <source type="image/webp" [srcset]="selectedArticle()!.author.photoWebP || selectedArticle()!.author.photo">
+                  <img 
+                    [src]="selectedArticle()!.author.photoFallback || selectedArticle()!.author.photo" 
+                    [alt]="selectedArticle()!.author.name"
+                    width="80"
+                    height="80"
+                    loading="lazy"
+                  >
+                </picture>
               } @else {
                 <div class="avatar-placeholder">{{ selectedArticle()!.author.name.charAt(0) }}</div>
               }

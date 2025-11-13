@@ -20,6 +20,8 @@ export interface NewsArticle {
     name: string;
     specialty: string;
     photo?: string;
+    photoWebP?: string;
+    photoFallback?: string;
   };
   publishDate: string;
   readingTime: number;
@@ -63,7 +65,9 @@ Ahora el ejecutivo pretende convocar una asamblea nacional constituyente, lo cua
       author: {
         name: 'Pablo Andrés Rengifo',
         specialty: 'Derecho Comercial',
-        photo: '/assets/images/teams/2.jpg'
+        photo: '/assets/images/teams/2.webp',
+        photoWebP: '/assets/images/teams/2.webp',
+        photoFallback: '/assets/images/teams/2.jpg'
       },
       publishDate: '2025-07-26',
       readingTime: 6,
@@ -89,7 +93,9 @@ Si en su empresa aún no se han ajustado los modelos contractuales o existen dud
       author: {
         name: 'Juan Sebastián Robayo Aguilar',
         specialty: 'Derecho Laboral',
-        photo: '/assets/images/teams/1.jpg'
+        photo: '/assets/images/teams/1.webp',
+        photoWebP: '/assets/images/teams/1.webp',
+        photoFallback: '/assets/images/teams/1.jpg'
       },
       publishDate: '2025-07-10',
       readingTime: 7,
@@ -117,7 +123,9 @@ Los Agents no son solo una función nueva. Son la puerta a una nueva arquitectur
       author: {
         name: 'Pablo Andrés Rengifo',
         specialty: 'Socio Fundador',
-        photo: '/assets/images/teams/2.jpg'
+        photo: '/assets/images/teams/2.webp',
+        photoWebP: '/assets/images/teams/2.webp',
+        photoFallback: '/assets/images/teams/2.jpg'
       },
       publishDate: '2025-08-22',
       readingTime: 8,
@@ -147,7 +155,9 @@ En un mundo donde la ciencia avanza más rápido que el derecho, los profesional
       author: {
         name: 'Pablo Andrés Rengifo',
         specialty: 'Socio Fundador',
-        photo: '/assets/images/teams/2.jpg'
+        photo: '/assets/images/teams/2.webp',
+        photoWebP: '/assets/images/teams/2.webp',
+        photoFallback: '/assets/images/teams/2.jpg'
       },
       publishDate: '2025-08-15',
       readingTime: 9,
@@ -189,7 +199,9 @@ La reforma implica nuevos retos normativos, económicos y operativos. Es indispe
       author: {
         name: 'Juan Sebastián Robayo Aguilar',
         specialty: 'Derecho Laboral',
-        photo: '/assets/images/teams/1.jpg'
+        photo: '/assets/images/teams/1.webp',
+        photoWebP: '/assets/images/teams/1.webp',
+        photoFallback: '/assets/images/teams/1.jpg'
       },
       publishDate: '2025-06-27',
       readingTime: 10,
@@ -231,7 +243,9 @@ V. Seguimiento por parte de la Corte. Una vez se cumpla el nuevo trámite legisl
       author: {
         name: 'Pablo Andrés Rengifo',
         specialty: 'Derecho Laboral',
-        photo: '/assets/images/teams/2.jpg'
+        photo: '/assets/images/teams/2.webp',
+        photoWebP: '/assets/images/teams/2.webp',
+        photoFallback: '/assets/images/teams/2.jpg'
       },
       publishDate: '2025-08-15',
       readingTime: 9,
