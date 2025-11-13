@@ -3,7 +3,10 @@
     <nav class="navbar">
       <!-- Logo -->
       <a href="/" class="logo" (click)="navigateToHome($event)">
-        <img src="/assets/images/logo.png" alt="LEX 42" class="logo-img">
+        <picture>
+          <source type="image/webp" srcset="/assets/images/logo.webp">
+          <img src="/assets/images/logo.png" alt="LEX 42" class="logo-img" width="120" height="40" loading="eager">
+        </picture>
       </a>
 
       <!-- Menu desktop -->

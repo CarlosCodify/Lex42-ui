@@ -7,6 +7,8 @@ interface TeamMember {
   name: string;
   position: string;
   photo: string;
+  photoWebP: string;
+  photoFallback: string;
   email: string;
   profileUrl?: string;
 }
@@ -24,7 +26,9 @@ export class TeamComponent {
       id: 1,
       name: 'Juan S. Aguilar',
       position: 'Socio Fundador Laboral',
-      photo: '/assets/images/teams/1.jpg',
+      photo: '/assets/images/teams/1.webp',
+      photoWebP: '/assets/images/teams/1.webp',
+      photoFallback: '/assets/images/teams/1.jpg',
       email: 'juanseaguilar@lex42.co',
       profileUrl: '/team/juan-aguilar'
     },
@@ -32,7 +36,9 @@ export class TeamComponent {
       id: 2,
       name: 'Pablo A. Rengifo',
       position: 'Socio Fundador Comercial',
-      photo: '/assets/images/teams/2.jpg',
+      photo: '/assets/images/teams/2.webp',
+      photoWebP: '/assets/images/teams/2.webp',
+      photoFallback: '/assets/images/teams/2.jpg',
       email: 'pablorengifo@lex42.co',
       profileUrl: '/team/pablo-rengifo'
     },
@@ -40,7 +46,9 @@ export class TeamComponent {
       id: 3,
       name: 'Veronica Rengifo',
       position: 'Asociada Senior',
-      photo: '/assets/images/teams/3.jpg',
+      photo: '/assets/images/teams/3.webp',
+      photoWebP: '/assets/images/teams/3.webp',
+      photoFallback: '/assets/images/teams/3.jpg',
       email: 'contacto@lex42.co',
       profileUrl: '/team/veronica-rengifo'
     }

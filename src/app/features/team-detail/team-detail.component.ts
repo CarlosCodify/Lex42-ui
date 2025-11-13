@@ -23,6 +23,8 @@ interface TeamMemberDetail {
   location: string;
   linkedinUrl?: string;
   photo: string;
+  photoWebP: string;
+  photoFallback: string;
   background: string;
   professionalSections: ProfessionalSection[];
 }
@@ -47,7 +49,9 @@ export class TeamDetailComponent implements OnInit {
       email: 'pablorengifo@lex42.co',
       location: 'Bogotá',
       linkedinUrl: 'https://www.linkedin.com/in/pablo-andr%C3%A9s-rengifo-trujillo-633394228/',
-      photo: '/assets/images/teams/2.jpg',
+      photo: '/assets/images/teams/2.webp',
+      photoWebP: '/assets/images/teams/2.webp',
+      photoFallback: '/assets/images/teams/2.jpg',
       background: 'Abogado, Pontificia Universidad Javeriana; Énfasis derecho empresarial; Especialista en Derecho Comercial, Universidad de los Andes.',
       professionalSections: [
         {
@@ -88,7 +92,9 @@ export class TeamDetailComponent implements OnInit {
       email: 'juanseaguilar@lex42.co',
       location: 'Bogotá',
       linkedinUrl: 'https://www.linkedin.com/in/juan-sebastián-robayo-aguilar-8a4a17160/',
-      photo: '/assets/images/teams/1.jpg',
+      photo: '/assets/images/teams/1.webp',
+      photoWebP: '/assets/images/teams/1.webp',
+      photoFallback: '/assets/images/teams/1.jpg',
       background: 'Abogado, Universidad de los Andes; Cuenta con un Diplomado en la evaluación de los Sistemas de Gestión Integral de la calidad QHSE; Énfasis derecho laboral.',
       professionalSections: [
         {
@@ -125,7 +131,9 @@ export class TeamDetailComponent implements OnInit {
       role: 'Asociada Senior',
       email: 'veronicarenjifo@hotmail.com',
       location: 'Buga, Valle del Cauca',
-      photo: '/assets/images/teams/3.jpg',
+      photo: '/assets/images/teams/3.webp',
+      photoWebP: '/assets/images/teams/3.webp',
+      photoFallback: '/assets/images/teams/3.jpg',
       background: 'Derecho Inmobiliario y Gestión Predial; Abogada, Universidad Santiago de Cali.',
       professionalSections: [
         {

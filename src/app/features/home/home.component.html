@@ -34,12 +34,17 @@
           [class.testimonial-right]="testimonial.id === 3"
         >
           <div class="testimonial-avatar-wrapper">
-            <img 
-              [src]="testimonial.avatar" 
-              [alt]="testimonial.author"
-              class="testimonial-avatar"
-              onerror="this.src='/assets/images/testimonials/default-avatar.png'"
-            >
+            <picture>
+              <source type="image/webp" [srcset]="testimonial.avatarWebP">
+              <img 
+                [src]="testimonial.avatarFallback" 
+                [alt]="testimonial.author"
+                class="testimonial-avatar"
+                width="80"
+                height="80"
+                loading="eager"
+              >
+            </picture>
           </div>
           <div class="testimonial-content">
             <p class="testimonial-quote">"{{ testimonial.quote }}"</p>
@@ -67,12 +72,17 @@
       <div class="clients-grid">
         @for (client of clientLogos(); track client.name) {
           <div class="client-logo-wrapper">
-            <img 
-              [src]="client.src" 
-              [alt]="client.name"
-              class="client-logo"
-              onerror="this.style.display='none'"
-            >
+            <picture>
+              <source type="image/webp" [srcset]="client.src">
+              <img 
+                [src]="client.fallback" 
+                [alt]="client.name"
+                class="client-logo"
+                width="120"
+                height="60"
+                loading="lazy"
+              >
+            </picture>
           </div>
         }
       </div>

@@ -54,7 +54,21 @@ async function optimizeImage(inputPath, outputPath) {
       });
     }
     
-    // Optimizar según el formato
+    const results = [];
+    
+    // 1. Generar WebP (siempre, es el formato principal)
+    const webpPath = outputPath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    await sharp(inputPath)
+      .resize(metadata.width > MAX_WIDTH ? MAX_WIDTH : metadata.width, null, {
+        withoutEnlargement: true,
+        fit: 'inside'
+      })
+      .webp({ quality: QUALITY.webp, effort: 6 })
+      .toFile(webpPath);
+    
+    const webpSize = await getFileSize(webpPath);
+    
+    // 2. Generar formato original optimizado (como fallback)
     if (ext === '.jpg' || ext === '.jpeg') {
       await image
         .jpeg({ quality: QUALITY.jpg, progressive: true, mozjpeg: true })
@@ -75,13 +89,17 @@ async function optimizeImage(inputPath, outputPath) {
     const optimizedSize = await getFileSize(outputPath);
     const saved = originalSize - optimizedSize;
     const savedPercent = ((saved / originalSize) * 100).toFixed(1);
+    const webpSaved = originalSize - webpSize;
+    const webpSavedPercent = ((webpSaved / originalSize) * 100).toFixed(1);
     
     return {
       file: basename(inputPath),
       originalSize,
       optimizedSize,
+      webpSize,
       saved,
-      savedPercent
+      savedPercent,
+      webpSavedPercent
     };
   } catch (error) {
     console.error(`${colors.red}❌ Error optimizando ${basename(inputPath)}: ${error.message}${colors.reset}`);
@@ -113,7 +131,10 @@ async function processDirectory(inputDir, outputDir) {
         const result = await optimizeImage(inputPath, outputPath);
         if (result) {
           results.push(result);
-          console.log(`${colors.green}✅ ${result.file}: ${formatBytes(result.originalSize)} → ${formatBytes(result.optimizedSize)} (${result.savedPercent}% ahorrado)${colors.reset}`);
+          console.log(`${colors.green}✅ ${result.file}:${colors.reset}`);
+          console.log(`   Original: ${formatBytes(result.originalSize)}`);
+          console.log(`   WebP: ${formatBytes(result.webpSize)} (${result.webpSavedPercent}% ahorrado) ${colors.yellow}⭐${colors.reset}`);
+          console.log(`   Fallback: ${formatBytes(result.optimizedSize)} (${result.savedPercent}% ahorrado)`);
         }
       }
     }
@@ -141,15 +162,23 @@ async function main() {
   
   const totalOriginal = results.reduce((acc, r) => acc + r.originalSize, 0);
   const totalOptimized = results.reduce((acc, r) => acc + r.optimizedSize, 0);
+  const totalWebP = results.reduce((acc, r) => acc + r.webpSize, 0);
   const totalSaved = totalOriginal - totalOptimized;
+  const totalWebPSaved = totalOriginal - totalWebP;
   const totalSavedPercent = ((totalSaved / totalOriginal) * 100).toFixed(1);
+  const totalWebPSavedPercent = ((totalWebPSaved / totalOriginal) * 100).toFixed(1);
   
   console.log(`📊 Archivos procesados: ${results.length}`);
-  console.log(`📦 Tamaño original: ${formatBytes(totalOriginal)}`);
-  console.log(`📦 Tamaño optimizado: ${formatBytes(totalOptimized)}`);
-  console.log(`${colors.yellow}💾 Espacio ahorrado: ${formatBytes(totalSaved)} (${totalSavedPercent}%)${colors.reset}\n`);
+  console.log(`\n📦 Tamaño original total: ${formatBytes(totalOriginal)}`);
+  console.log(`\n${colors.yellow}⭐ WEBP (Recomendado):${colors.reset}`);
+  console.log(`   Tamaño: ${formatBytes(totalWebP)}`);
+  console.log(`   Ahorrado: ${formatBytes(totalWebPSaved)} (${totalWebPSavedPercent}%)`);
+  console.log(`\n📦 Fallback (JPG/PNG optimizados):`);
+  console.log(`   Tamaño: ${formatBytes(totalOptimized)}`);
+  console.log(`   Ahorrado: ${formatBytes(totalSaved)} (${totalSavedPercent}%)`);
   
-  console.log(`${colors.blue}📋 Próximo paso: Revisa las imágenes en ${outputDir}${colors.reset}`);
+  console.log(`\n${colors.blue}📋 Próximo paso: Revisa las imágenes en ${outputDir}${colors.reset}`);
+  console.log(`${colors.blue}   Verás archivos .webp y sus fallbacks originales.${colors.reset}`);
   console.log(`${colors.blue}   Si todo se ve bien, reemplaza la carpeta original.${colors.reset}\n`);
 }
 

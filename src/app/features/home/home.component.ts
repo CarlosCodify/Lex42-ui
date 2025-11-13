@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 interface Testimonial {
   id: number;
   avatar: string;
+  avatarWebP: string;
+  avatarFallback: string;
   quote: string;
   author: string;
   company: string;
@@ -23,7 +25,9 @@ export class HomeComponent {
   protected readonly testimonials = signal<Testimonial[]>([
     {
       id: 1,
-      avatar: '/assets/images/clients/quimisa.png',
+      avatar: '/assets/images/clients/quimisa.webp',
+      avatarWebP: '/assets/images/clients/quimisa.webp',
+      avatarFallback: '/assets/images/clients/quimisa.png',
       quote: 'Son un aliado muy importante para nuestra operación',
       author: 'Quiminsa',
       company: '',
@@ -33,7 +37,9 @@ export class HomeComponent {
     },
     {
       id: 2,
-      avatar: '/assets/images/clients/cnid.png',
+      avatar: '/assets/images/clients/cnid.webp',
+      avatarWebP: '/assets/images/clients/cnid.webp',
+      avatarFallback: '/assets/images/clients/cnid.png',
       quote: 'Con Lex 42 tomamos decisiones con tranquilidad y claridad. Siempre entienden lo que necesitamos.',
       author: 'Felipe Palaez',
       company: '',
@@ -43,7 +49,9 @@ export class HomeComponent {
     },
     {
       id: 3,
-      avatar: '/assets/images/clients/ingeal.png',
+      avatar: '/assets/images/clients/ingeal.webp',
+      avatarWebP: '/assets/images/clients/ingeal.webp',
+      avatarFallback: '/assets/images/clients/ingeal.png',
       quote: 'Lex 42 prioriza nuestro negocio y siempre responde con soluciones claras y ágiles.',
       author: 'Nicolas Riascos',
       company: '',
@@ -54,12 +62,12 @@ export class HomeComponent {
   ]);
 
   protected readonly clientLogos = signal([
-    { name: 'Ingeal de Occidente', src: '/assets/images/clients/ingeal.png' },
-    { name: 'Quimisa', src: '/assets/images/clients/quimisa.png' },
-    { name: 'CNID', src: '/assets/images/clients/cnid.png' },
-    { name: 'Servinformación', src: '/assets/images/clients/servinformacion.png' },
-    { name: 'Casa Estudio Fitness Club', src: '/assets/images/clients/casa-estudio.png' },
-    { name: 'Don karlos', src: '/assets/images/clients/don-karlos.png' }
+    { name: 'Ingeal de Occidente', src: '/assets/images/clients/ingeal.webp', fallback: '/assets/images/clients/ingeal.png' },
+    { name: 'Quimisa', src: '/assets/images/clients/quimisa.webp', fallback: '/assets/images/clients/quimisa.png' },
+    { name: 'CNID', src: '/assets/images/clients/cnid.webp', fallback: '/assets/images/clients/cnid.png' },
+    { name: 'Servinformación', src: '/assets/images/clients/servinformacion.webp', fallback: '/assets/images/clients/servinformacion.png' },
+    { name: 'Casa Estudio Fitness Club', src: '/assets/images/clients/casa-estudio.webp', fallback: '/assets/images/clients/casa-estudio.png' },
+    { name: 'Don karlos', src: '/assets/images/clients/don-karlos.webp', fallback: '/assets/images/clients/don-karlos.png' }
   ]);
 
   protected getStarArray(rating: number): number[] {

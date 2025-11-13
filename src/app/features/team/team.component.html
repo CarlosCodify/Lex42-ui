@@ -20,12 +20,17 @@
       @for (member of teamMembers(); track member.id) {
         <article class="team-card">
           <div class="team-photo-wrapper" (click)="goToProfile(member)">
-            <img 
-              [src]="member.photo" 
-              [alt]="member.name"
-              class="team-photo"
-              onerror="this.src='/assets/images/teams/placeholder.jpg'"
-            >
+            <picture>
+              <source type="image/webp" [srcset]="member.photoWebP">
+              <img 
+                [src]="member.photoFallback" 
+                [alt]="member.name"
+                class="team-photo"
+                width="300"
+                height="300"
+                loading="lazy"
+              >
+            </picture>
             
             <div class="team-overlay">
               <div class="overlay-content">

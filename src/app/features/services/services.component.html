@@ -12,11 +12,16 @@
         [class.card-primary]="services()[0].variant === 'primary'"
       >
         <div class="card-image">
-          <img 
-            [src]="services()[0].image" 
-            [alt]="services()[0].title"
-            onerror="this.src='/assets/images/services/placeholder.jpg'"
-          >
+          <picture>
+            <source type="image/webp" [srcset]="services()[0].imageWebP">
+            <img 
+              [src]="services()[0].imageFallback" 
+              [alt]="services()[0].title"
+              width="600"
+              height="400"
+              loading="eager"
+            >
+          </picture>
           @if (services()[0].badges && services()[0].badges!.length > 0) {
             <div class="card-badges">
               @for (badge of services()[0].badges; track badge) {
@@ -41,11 +46,16 @@
         [class.card-primary]="services()[1].variant === 'primary'"
       >
         <div class="card-image">
-          <img 
-            [src]="services()[1].image" 
-            [alt]="services()[1].title"
-            onerror="this.src='/assets/images/services/placeholder.jpg'"
-          >
+          <picture>
+            <source type="image/webp" [srcset]="services()[1].imageWebP">
+            <img 
+              [src]="services()[1].imageFallback" 
+              [alt]="services()[1].title"
+              width="400"
+              height="300"
+              loading="lazy"
+            >
+          </picture>
         </div>
         <div class="card-content">
           <h3 class="card-title">{{ services()[1].title }}</h3>
@@ -58,11 +68,16 @@
         [class.card-dark]="services()[3].variant === 'dark'"
       >
         <div class="card-image">
-          <img 
-            [src]="services()[3].image" 
-            [alt]="services()[3].title"
-            onerror="this.src='/assets/images/services/placeholder.jpg'"
-          >
+          <picture>
+            <source type="image/webp" [srcset]="services()[3].imageWebP">
+            <img 
+              [src]="services()[3].imageFallback" 
+              [alt]="services()[3].title"
+              width="400"
+              height="300"
+              loading="lazy"
+            >
+          </picture>
         </div>
         <div class="card-content">
           <h3 class="card-title">{{ services()[3].title }}</h3>
@@ -75,11 +90,16 @@
         [class.card-dark]="services()[2].variant === 'dark'"
       >
         <div class="card-image">
-          <img 
-            [src]="services()[2].image" 
-            [alt]="services()[2].title"
-            onerror="this.src='/assets/images/services/placeholder.jpg'"
-          >
+          <picture>
+            <source type="image/webp" [srcset]="services()[2].imageWebP">
+            <img 
+              [src]="services()[2].imageFallback" 
+              [alt]="services()[2].title"
+              width="400"
+              height="300"
+              loading="lazy"
+            >
+          </picture>
         </div>
         <div class="card-content">
           <h3 class="card-title">{{ services()[2].title }}</h3>

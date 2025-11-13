@@ -51,7 +51,17 @@
         >
           <div class="card-content">
             <div class="member-photo">
-              <img [src]="member.photo" [alt]="member.name" class="photo">
+              <picture>
+                <source type="image/webp" [srcset]="member.photoWebP">
+                <img 
+                  [src]="member.photoFallback" 
+                  [alt]="member.name" 
+                  class="photo"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                >
+              </picture>
             </div>
             
             <h3 class="member-name">{{ member.name }}</h3>

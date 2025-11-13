@@ -21,7 +21,17 @@
           <p class="historia-quote">{{ story.quote }}</p>
           
           <div class="historia-footer">
-            <img [src]="story.logo" [alt]="story.company" class="historia-logo">
+            <picture>
+              <source type="image/webp" [srcset]="story.logoWebP">
+              <img 
+                [src]="story.logoFallback" 
+                [alt]="story.company" 
+                class="historia-logo"
+                width="80"
+                height="40"
+                loading="lazy"
+              >
+            </picture>
             <div class="historia-author-info">
               <p class="historia-author">{{ story.author }}</p>
               <p class="historia-position">

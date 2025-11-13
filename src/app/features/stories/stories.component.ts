@@ -7,6 +7,8 @@ interface Story {
   position: string;
   company: string;
   logo: string;
+  logoWebP: string;
+  logoFallback: string;
 }
 
 @Component({
@@ -23,21 +25,27 @@ export class StoriesComponent {
       author: 'Jacobo Riascos',
       position: 'Representante Legal Suplente de Ingeniería',
       company: 'en Galvanizados de Occidente',
-      logo: '/assets/images/clients/ingeal.png'
+      logo: '/assets/images/clients/ingeal.webp',
+      logoWebP: '/assets/images/clients/ingeal.webp',
+      logoFallback: '/assets/images/clients/ingeal.png'
     },
     {
       quote: 'Con Lex 42 tengo la tranquilidad de que siempre están a una llamada de distancia para resolver cualquier necesidad o imprevisto relacionado con nuestro equipo.',
       author: 'Daniel Sandoval',
       position: 'COO de Químicos Industriales Asociados',
       company: '(QUIMSA)',
-      logo: '/assets/images/clients/quimisa.png'
+      logo: '/assets/images/clients/quimisa.webp',
+      logoWebP: '/assets/images/clients/quimisa.webp',
+      logoFallback: '/assets/images/clients/quimisa.png'
     },
     {
       quote: 'Valoramos cómo Lex 42 nos resume e informa los cambios regulatorios que pueden impactar nuestra operación.',
       author: 'Manuel Peláez',
       position: 'CEO de Servi Información',
       company: '',
-      logo: '/assets/images/clients/servinformacion.png'
+      logo: '/assets/images/clients/servinformacion.webp',
+      logoWebP: '/assets/images/clients/servinformacion.webp',
+      logoFallback: '/assets/images/clients/servinformacion.png'
     }
   ]);
 }
